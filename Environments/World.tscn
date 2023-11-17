@@ -53,9 +53,6 @@ shape = SubResource("RectangleShape2D_c6rxu")
 [node name="scene_transition" parent="." instance=ExtResource("3_1xbm7")]
 follow_viewport_enabled = true
 
-[node name="ColorRect" parent="scene_transition" index="0"]
-color = Color(1, 0.364706, 1, 0)
-
 [connection signal="body_entered" from="Transition" to="Transition" method="_on_body_entered"]
 
 [editable path="scene_transition"]

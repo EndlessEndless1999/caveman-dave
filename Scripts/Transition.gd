@@ -7,4 +7,4 @@ extends Area2D
 
 func _on_body_entered(body):
 	if body == player:
-		DefaultTransition.change_scene("res://Scenes/Entities/Player/Character.tscn")
+		DefaultTransition.change_scene("res://Environments/Default_Level.tscn")
