@@ -20,10 +20,11 @@ func slide_movement(delta):
 			Player.velocity.y = - climb_speed
 		elif Player.movement_input.y > 0:
 			Player.velocity.y = climb_speed
-		else:
-			player_movement()
-			Player.gravity(delta)
-			Player.velocity.y *= slide_friction
+		else: 
+			Player.velocity.y = 0
+		player_movement()
+		Player.gravity(delta)
+		Player.velocity.y *= slide_friction
 
 func enter_state():
 	pass

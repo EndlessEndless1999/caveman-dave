@@ -1,9 +1,14 @@
-[gd_scene load_steps=3 format=3 uid="uid://dbr0cxg7ncbb2"]
+[gd_scene load_steps=6 format=3 uid="uid://dbr0cxg7ncbb2"]
 
 [ext_resource type="PackedScene" uid="uid://c6rfy6ymyjf5e" path="res://Scenes/Entities/Player/Character.tscn" id="1_tyvoi"]
+[ext_resource type="Script" path="res://Scripts/Transition.gd" id="2_5p881"]
+[ext_resource type="PackedScene" uid="uid://ctg3gv2rf476j" path="res://Transitions/default_transition.tscn" id="3_1xbm7"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_j3okk"]
 size = Vector2(506, 78)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_c6rxu"]
+size = Vector2(122, 126)
 
 [node name="World" type="Node2D"]
 
@@ -36,3 +41,21 @@ shape = SubResource("RectangleShape2D_j3okk")
 
 [node name="CharacterBody" parent="." instance=ExtResource("1_tyvoi")]
 position = Vector2(61, 188)
+
+[node name="Transition" type="Area2D" parent="."]
+position = Vector2(443, 153)
+script = ExtResource("2_5p881")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Transition"]
+position = Vector2(1, 0)
+shape = SubResource("RectangleShape2D_c6rxu")
+
+[node name="scene_transition" parent="." instance=ExtResource("3_1xbm7")]
+follow_viewport_enabled = true
+
+[node name="ColorRect" parent="scene_transition" index="0"]
+color = Color(1, 0.364706, 1, 0)
+
+[connection signal="body_entered" from="Transition" to="Transition" method="_on_body_entered"]
+
+[editable path="scene_transition"]
