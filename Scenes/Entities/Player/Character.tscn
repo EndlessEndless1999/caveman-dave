@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://c6rfy6ymyjf5e"]
+[gd_scene load_steps=10 format=3 uid="uid://c6rfy6ymyjf5e"]
 
 [ext_resource type="Script" path="res://Scripts/Character.gd" id="1_gqh8n"]
 [ext_resource type="Texture2D" uid="uid://uachrx165rup" path="res://icon.svg" id="2_2cyfc"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://chkey6semamrv" path="res://Scenes/Entities/Player/MOVE.tscn" id="4_gn233"]
 [ext_resource type="PackedScene" uid="uid://dj0ub36r16unm" path="res://Scenes/Entities/Player/JUMP.tscn" id="5_pucii"]
 [ext_resource type="PackedScene" uid="uid://dyr148up4j8gl" path="res://Scenes/Entities/Player/FALL.tscn" id="6_yhvhn"]
+[ext_resource type="PackedScene" uid="uid://dap6d4ob5myxl" path="res://Scenes/Entities/Player/DASH.tscn" id="8_axmec"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0gu11"]
 
@@ -34,6 +35,8 @@ script = ExtResource("3_jxtp4")
 [node name="JUMP" parent="STATES" instance=ExtResource("5_pucii")]
 
 [node name="FALL" parent="STATES" instance=ExtResource("6_yhvhn")]
+
+[node name="DASH" parent="STATES" instance=ExtResource("8_axmec")]
 
 [node name="Label" type="Label" parent="."]
 offset_right = 40.0

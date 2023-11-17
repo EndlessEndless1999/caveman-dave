@@ -1,8 +1,6 @@
 extends CharacterBody2D
 
 
-const SPEED = 300.0
-const JUMP_VELOCITY = -400.0
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity_value = ProjectSettings.get_setting("physics/2d/default_gravity")
@@ -14,6 +12,15 @@ var jump_input_actuation = false
 var climb_input = false
 var dash_input = false
 
+#player_movement
+const SPEED = 300.0
+const JUMP_VELOCITY = -400.0
+var last_direction = Vector2.RIGHT
+
+#MECHANICS
+var can_dash = true
+
+#states
 var current_state = null
 var prev_state = null
 
@@ -75,7 +82,7 @@ func player_input():
 	
 	
 	#dash
-	if Input.is_action_pressed("Dash"):
+	if Input.is_action_just_pressed("Dash"):
 		dash_input = true
 	else: 
 		dash_input = false
