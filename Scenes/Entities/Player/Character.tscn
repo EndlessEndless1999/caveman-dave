@@ -1,7 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://c6rfy6ymyjf5e"]
+[gd_scene load_steps=9 format=3 uid="uid://c6rfy6ymyjf5e"]
 
 [ext_resource type="Script" path="res://Scripts/Character.gd" id="1_gqh8n"]
 [ext_resource type="Texture2D" uid="uid://uachrx165rup" path="res://icon.svg" id="2_2cyfc"]
+[ext_resource type="Script" path="res://Scripts/STATES.gd" id="3_jxtp4"]
 [ext_resource type="PackedScene" uid="uid://d1yc45sfomloa" path="res://Scenes/Entities/Player/IDLE.tscn" id="3_nikui"]
 [ext_resource type="PackedScene" uid="uid://chkey6semamrv" path="res://Scenes/Entities/Player/MOVE.tscn" id="4_gn233"]
 [ext_resource type="PackedScene" uid="uid://dj0ub36r16unm" path="res://Scenes/Entities/Player/JUMP.tscn" id="5_pucii"]
@@ -24,6 +25,7 @@ texture = ExtResource("2_2cyfc")
 zoom = Vector2(2, 2)
 
 [node name="STATES" type="Node" parent="."]
+script = ExtResource("3_jxtp4")
 
 [node name="IDLE" parent="STATES" instance=ExtResource("3_nikui")]
 
@@ -32,3 +34,7 @@ zoom = Vector2(2, 2)
 [node name="JUMP" parent="STATES" instance=ExtResource("5_pucii")]
 
 [node name="FALL" parent="STATES" instance=ExtResource("6_yhvhn")]
+
+[node name="Label" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 23.0
