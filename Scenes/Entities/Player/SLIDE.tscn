@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://djsx2oj14ju8v"]
+
+[ext_resource type="Script" path="res://Scripts/SLIDE.gd" id="1_v61l1"]
+
+[node name="SLIDE" type="Node"]
+script = ExtResource("1_v61l1")

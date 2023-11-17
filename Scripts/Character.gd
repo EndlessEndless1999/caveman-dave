@@ -13,8 +13,8 @@ var climb_input = false
 var dash_input = false
 
 #player_movement
-const SPEED = 300.0
-const JUMP_VELOCITY = -400.0
+const SPEED = 70.0
+const JUMP_VELOCITY = -200.0
 var last_direction = Vector2.RIGHT
 
 #MECHANICS
@@ -24,7 +24,9 @@ var can_dash = true
 var current_state = null
 var prev_state = null
 
+#Nodes
 @onready var STATES = $STATES
+@onready var Raycasts = $Raycasts
 
 func _ready():
 	for state in STATES.get_children():
@@ -50,6 +52,16 @@ func change_state(input_state):
 		
 		prev_state.exit_state()
 		current_state.enter_state()
+
+func get_next_to_wall():
+	for raycast in Raycasts.get_children():
+		raycast.force_raycast_update()
+		if raycast.is_colliding():
+			if raycast.target_position.x > 0:
+				return Vector2.RIGHT
+			else: 
+				return Vector2.LEFT
+	return null
 
 func player_input():
 	movement_input = Vector2.ZERO
