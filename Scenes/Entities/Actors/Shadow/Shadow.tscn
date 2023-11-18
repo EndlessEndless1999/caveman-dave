@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://hmnr8i81d44f"]
+
+[ext_resource type="Script" path="res://Scripts/ActorScripts/Shadow.gd" id="1_v6put"]
+[ext_resource type="Texture2D" uid="uid://uachrx165rup" path="res://icon.svg" id="1_vuh3c"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_8a3nk"]
+radius = 4.0
+height = 12.0
+
+[node name="Shadow" type="CharacterBody2D"]
+script = ExtResource("1_v6put")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_8a3nk")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.0625, 0.0859375)
+texture = ExtResource("1_vuh3c")

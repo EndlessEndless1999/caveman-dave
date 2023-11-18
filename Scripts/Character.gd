@@ -1,5 +1,5 @@
 extends CharacterBody2D
-
+class_name Player
 
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
