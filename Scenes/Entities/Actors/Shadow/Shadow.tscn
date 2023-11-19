@@ -11,7 +11,7 @@ radius = 4.0
 height = 12.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_24c66"]
-size = Vector2(90, 20)
+size = Vector2(90, 11)
 
 [node name="Shadow" type="CharacterBody2D" node_paths=PackedStringArray("character_detector", "character_mover")]
 script = ExtResource("1_v6put")

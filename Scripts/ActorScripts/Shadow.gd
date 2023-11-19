@@ -1,6 +1,13 @@
 extends CharacterBody2D
 class_name Shadow
 
+var gravity_value = ProjectSettings.get_setting("physics/2d/default_gravity") 
+
+func gravity(delta):
+	if not is_on_floor():
+		print('GRAVIT')
+		velocity.y += gravity_value * delta
+
 enum STATES {IDLE, PATROL, ATTACK, DEAD}
 var current_state = STATES.IDLE
 

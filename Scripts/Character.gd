@@ -12,9 +12,12 @@ var jump_input_actuation = false
 var climb_input = false
 var dash_input = false
 
+var attack_input = false
+
 #player_movement
 const SPEED = 70.0
 const JUMP_VELOCITY = -200.0
+const ATTACK_JUMP_VELOCITY = -100
 var last_direction = Vector2.RIGHT
 
 #MECHANICS
@@ -73,6 +76,12 @@ func player_input():
 		movement_input.y -= 1
 	if Input.is_action_pressed("MoveDown"):
 		movement_input.y += 1
+	
+	#ATTACKS
+	if Input.is_action_just_pressed("Attack"):
+		attack_input = true
+	else:
+		attack_input = false
 	
 	#JUMPS
 	if Input.is_action_pressed("Jump"):

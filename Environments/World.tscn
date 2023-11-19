@@ -46,6 +46,7 @@ position = Vector2(61, 188)
 [node name="Transition" type="Area2D" parent="."]
 position = Vector2(443, 153)
 script = ExtResource("2_5p881")
+target_scene = "res://Environments/World.tscn"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Transition"]
 position = Vector2(1, 0)
@@ -57,14 +58,17 @@ follow_viewport_enabled = true
 [node name="Shadow" parent="." instance=ExtResource("5_j4jo1")]
 position = Vector2(221, 204)
 
+[node name="CollisionShape2D" parent="Shadow/CharacterDetector" index="0"]
+position = Vector2(0, -0.5)
+
 [node name="CharacterMover" parent="Shadow" index="3"]
 max_speed = 50.0
 
 [node name="Marker2D" type="Marker2D" parent="Shadow/PatrolNodes" index="0"]
-position = Vector2(281, 204)
+position = Vector2(281, 214)
 
 [node name="Marker2D2" type="Marker2D" parent="Shadow/PatrolNodes" index="1"]
-position = Vector2(162, 204)
+position = Vector2(162, 214)
 
 [connection signal="body_entered" from="Transition" to="Transition" method="_on_body_entered"]
 

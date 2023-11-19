@@ -3,6 +3,8 @@ extends State
 
 func update(delta):
 	Player.gravity(delta)
+	if Player.attack_input:
+		return STATES.ATTACK_GROUND
 	if Player.movement_input.x != 0:
 		return STATES.MOVE
 	if Player.jump_input_actuation == true:

@@ -4,6 +4,8 @@ extends State
 func update(delta):
 	Player.gravity(delta)
 	player_movement()
+	if Player.attack_input:
+		return STATES.ATTACK_GROUND
 	if Player.velocity.x == 0:
 		return STATES.IDLE
 	if Player.velocity.y > 0:

@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://c6rfy6ymyjf5e"]
+[gd_scene load_steps=14 format=3 uid="uid://c6rfy6ymyjf5e"]
 
 [ext_resource type="Script" path="res://Scripts/Character.gd" id="1_gqh8n"]
 [ext_resource type="Texture2D" uid="uid://uachrx165rup" path="res://icon.svg" id="2_2cyfc"]
@@ -9,6 +9,9 @@
 [ext_resource type="PackedScene" uid="uid://dyr148up4j8gl" path="res://Scenes/Entities/Player/FALL.tscn" id="6_yhvhn"]
 [ext_resource type="PackedScene" uid="uid://dap6d4ob5myxl" path="res://Scenes/Entities/Player/DASH.tscn" id="8_axmec"]
 [ext_resource type="PackedScene" uid="uid://djsx2oj14ju8v" path="res://Scenes/Entities/Player/SLIDE.tscn" id="9_r2chd"]
+[ext_resource type="PackedScene" uid="uid://t6elg4gngm07" path="res://Scenes/Entities/Player/ATTACK_GROUND.tscn" id="10_qo76x"]
+[ext_resource type="PackedScene" uid="uid://giyu2lrnckoo" path="res://Scenes/Entities/Player/ATTACK_JUMP.tscn" id="11_uivd5"]
+[ext_resource type="PackedScene" uid="uid://2631l2aq8cim" path="res://Scenes/Entities/Player/ATTACK_FALL.tscn" id="12_4oq02"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0gu11"]
 
@@ -41,6 +44,12 @@ script = ExtResource("3_jxtp4")
 [node name="DASH" parent="STATES" instance=ExtResource("8_axmec")]
 
 [node name="SLIDE" parent="STATES" instance=ExtResource("9_r2chd")]
+
+[node name="ATTACK_GROUND" parent="STATES" instance=ExtResource("10_qo76x")]
+
+[node name="ATTACK_JUMP" parent="STATES" instance=ExtResource("11_uivd5")]
+
+[node name="ATTACK_FALL" parent="STATES" instance=ExtResource("12_4oq02")]
 
 [node name="Label" type="Label" parent="."]
 offset_right = 40.0

@@ -7,6 +7,10 @@ extends Node
 @onready var DASH = $DASH
 @onready var SLIDE = $SLIDE
 
+@onready var ATTACK_GROUND = $ATTACK_GROUND
+@onready var ATTACK_JUMP = $ATTACK_JUMP
+@onready var ATTACK_FALL = $ATTACK_FALL
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
