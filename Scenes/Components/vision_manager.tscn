@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://c6cnqufoi673e"]
+
+[ext_resource type="Script" path="res://Scripts/ComponentScripts/VisionManager.gd" id="1_7mwtb"]
+
+[node name="VisionManager" type="Node"]
+script = ExtResource("1_7mwtb")
+vision_cone_arc = null

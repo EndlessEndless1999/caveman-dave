@@ -98,3 +98,7 @@ func player_input():
 		dash_input = true
 	else: 
 		dash_input = false
+
+
+func is_dead():
+	return false

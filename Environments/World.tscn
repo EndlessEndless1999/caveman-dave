@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://dbr0cxg7ncbb2"]
+[gd_scene load_steps=7 format=3 uid="uid://dbr0cxg7ncbb2"]
 
 [ext_resource type="PackedScene" uid="uid://c6rfy6ymyjf5e" path="res://Scenes/Entities/Player/Character.tscn" id="1_tyvoi"]
 [ext_resource type="Script" path="res://Scripts/Transition.gd" id="2_5p881"]
 [ext_resource type="PackedScene" uid="uid://ctg3gv2rf476j" path="res://Transitions/default_transition.tscn" id="3_1xbm7"]
+[ext_resource type="PackedScene" uid="uid://hmnr8i81d44f" path="res://Scenes/Entities/Actors/Shadow/Shadow.tscn" id="5_j4jo1"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_j3okk"]
 size = Vector2(506, 78)
@@ -53,6 +54,20 @@ shape = SubResource("RectangleShape2D_c6rxu")
 [node name="scene_transition" parent="." instance=ExtResource("3_1xbm7")]
 follow_viewport_enabled = true
 
+[node name="Shadow" parent="." instance=ExtResource("5_j4jo1")]
+position = Vector2(221, 204)
+
+[node name="CharacterMover" parent="Shadow" index="3"]
+max_speed = 50.0
+
+[node name="Marker2D" type="Marker2D" parent="Shadow/PatrolNodes" index="0"]
+position = Vector2(281, 204)
+
+[node name="Marker2D2" type="Marker2D" parent="Shadow/PatrolNodes" index="1"]
+position = Vector2(162, 204)
+
 [connection signal="body_entered" from="Transition" to="Transition" method="_on_body_entered"]
 
 [editable path="scene_transition"]
+[editable path="Shadow"]
+[editable path="Shadow/CharacterDetector"]

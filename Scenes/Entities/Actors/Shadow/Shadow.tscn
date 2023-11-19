@@ -1,14 +1,22 @@
-[gd_scene load_steps=4 format=3 uid="uid://hmnr8i81d44f"]
+[gd_scene load_steps=8 format=3 uid="uid://hmnr8i81d44f"]
 
 [ext_resource type="Script" path="res://Scripts/ActorScripts/Shadow.gd" id="1_v6put"]
 [ext_resource type="Texture2D" uid="uid://uachrx165rup" path="res://icon.svg" id="1_vuh3c"]
+[ext_resource type="PackedScene" uid="uid://0rxn124nwln" path="res://Scenes/Components/character_detector.tscn" id="3_vua0y"]
+[ext_resource type="PackedScene" uid="uid://bsgtxkganwqtu" path="res://Scenes/Components/character_mover.tscn" id="4_liv1p"]
+[ext_resource type="Script" path="res://Scripts/IdleTimer.gd" id="5_ggwqw"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_8a3nk"]
 radius = 4.0
 height = 12.0
 
-[node name="Shadow" type="CharacterBody2D"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_24c66"]
+size = Vector2(90, 20)
+
+[node name="Shadow" type="CharacterBody2D" node_paths=PackedStringArray("character_detector", "character_mover")]
 script = ExtResource("1_v6put")
+character_detector = NodePath("CharacterDetector")
+character_mover = NodePath("CharacterMover")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_8a3nk")
@@ -16,3 +24,28 @@ shape = SubResource("CapsuleShape2D_8a3nk")
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(0.0625, 0.0859375)
 texture = ExtResource("1_vuh3c")
+
+[node name="CharacterDetector" parent="." instance=ExtResource("3_vua0y")]
+collision_layer = 4
+collision_mask = 4
+
+[node name="CollisionShape2D" parent="CharacterDetector" index="0"]
+shape = SubResource("RectangleShape2D_24c66")
+
+[node name="CharacterMover" parent="." node_paths=PackedStringArray("body_to_move") instance=ExtResource("4_liv1p")]
+body_to_move = NodePath("..")
+
+[node name="PatrolNodes" type="Node" parent="."]
+
+[node name="Label" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="IdleTimer" type="Timer" parent="."]
+wait_time = 0.1
+one_shot = true
+script = ExtResource("5_ggwqw")
+
+[connection signal="timeout" from="IdleTimer" to="." method="_on_idle_timer_timeout"]
+
+[editable path="CharacterDetector"]
