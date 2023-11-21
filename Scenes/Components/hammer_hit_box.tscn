@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://dovg3su1qtc5g"]
+
+[ext_resource type="Script" path="res://Scripts/Classes/HammerHitBox.gd" id="1_d581b"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_m4d1o"]
+size = Vector2(20, 13)
+
+[node name="HammerHitBox" type="Area2D"]
+monitoring = false
+monitorable = false
+script = ExtResource("1_d581b")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(22, 0)
+shape = SubResource("RectangleShape2D_m4d1o")

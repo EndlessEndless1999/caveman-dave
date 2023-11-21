@@ -5,7 +5,6 @@ extends State
 var attacking = true
 
 func update(delta):
-	print('GROUND ATTACK')
 	Player.velocity = Vector2.ZERO
 	if !attacking:
 		return STATES.IDLE
@@ -14,9 +13,11 @@ func update(delta):
 
 func enter_state():
 	timer.start()
+	STATES.hammer_hit_box.attacking = true
 
 func exit_state():
 	attacking = true
+	STATES.hammer_hit_box.attacking = false
 
 
 

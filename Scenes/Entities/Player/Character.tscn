@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://c6rfy6ymyjf5e"]
+[gd_scene load_steps=15 format=3 uid="uid://c6rfy6ymyjf5e"]
 
 [ext_resource type="Script" path="res://Scripts/Character.gd" id="1_gqh8n"]
 [ext_resource type="Texture2D" uid="uid://uachrx165rup" path="res://icon.svg" id="2_2cyfc"]
@@ -12,6 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://t6elg4gngm07" path="res://Scenes/Entities/Player/ATTACK_GROUND.tscn" id="10_qo76x"]
 [ext_resource type="PackedScene" uid="uid://giyu2lrnckoo" path="res://Scenes/Entities/Player/ATTACK_JUMP.tscn" id="11_uivd5"]
 [ext_resource type="PackedScene" uid="uid://2631l2aq8cim" path="res://Scenes/Entities/Player/ATTACK_FALL.tscn" id="12_4oq02"]
+[ext_resource type="PackedScene" uid="uid://dovg3su1qtc5g" path="res://Scenes/Components/hammer_hit_box.tscn" id="13_oanpp"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0gu11"]
 
@@ -30,8 +31,9 @@ texture = ExtResource("2_2cyfc")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 
-[node name="STATES" type="Node" parent="."]
+[node name="STATES" type="Node" parent="." node_paths=PackedStringArray("hammer_hit_box")]
 script = ExtResource("3_jxtp4")
+hammer_hit_box = NodePath("../HammerHitBox")
 
 [node name="IDLE" parent="STATES" instance=ExtResource("3_nikui")]
 
@@ -76,3 +78,5 @@ collision_mask = 2
 position = Vector2(0, 10)
 target_position = Vector2(-13, 2.08165e-12)
 collision_mask = 2
+
+[node name="HammerHitBox" parent="." instance=ExtResource("13_oanpp")]

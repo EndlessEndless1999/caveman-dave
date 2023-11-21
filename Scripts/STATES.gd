@@ -11,6 +11,8 @@ extends Node
 @onready var ATTACK_JUMP = $ATTACK_JUMP
 @onready var ATTACK_FALL = $ATTACK_FALL
 
+@export var hammer_hit_box : HammerHurtBox
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

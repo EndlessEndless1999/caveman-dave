@@ -5,8 +5,9 @@ var gravity_value = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 func gravity(delta):
 	if not is_on_floor():
-		print('GRAVIT')
 		velocity.y += gravity_value * delta
+	else:
+		velocity.y = 0
 
 enum STATES {IDLE, PATROL, ATTACK, DEAD}
 var current_state = STATES.IDLE
@@ -23,7 +24,7 @@ var start_facing_dir : Vector2
 var patrol_points = []
 var patrol_index = 0
 
-@export var attack_range = 3.0
+@export var attack_range = 50
 @export var attack_rate = 1.0
 var last_attack_time = 0.0
 
@@ -111,6 +112,7 @@ func process_attack_state(delta):
 	if !is_instance_valid(current_target) or current_target.is_dead():
 		update_current_target()
 	
+	
 	if current_target == null:
 		return_to_start_state()
 		print('TARGET NULL')
@@ -121,12 +123,10 @@ func process_attack_state(delta):
 	var target_position = current_target.global_position
 	
 	
-	
-	if our_pos.distance_to(target_position) < attack_range * attack_range:
-		character_mover.move_to_position(our_pos)
+	if our_pos.distance_to(target_position) < attack_range:
 		execute_attack()
 	else: 
-		character_mover.move_to_position(our_pos)
+		character_mover.move_to_position(target_position)
 
 func process_dead_state(delta):
 	pass
@@ -147,7 +147,6 @@ func get_visible_enemies():
 	var visible_enemies = []
 	for enemy in character_detector.get_nearby_enemies():
 		if is_instance_valid(enemy):
-			print('VISION WORKING')
 			var enemy_pos = enemy.global_position
 			visible_enemies.append(enemy)
 	return visible_enemies
@@ -175,10 +174,9 @@ func update_current_target():
 
 func execute_attack():
 	if current_target == null:
+		print('Not Working')
 		return
-	var cur_time = Time.get_ticks_msec() / 1000.0
-	if last_attack_time + attack_rate < cur_time:
-		attack()
+	attack()
 
 func attack():
 	print('ATTACK')
@@ -192,5 +190,4 @@ func is_dead():
 
 
 func _on_idle_timer_timeout():
-	print('TIMER WORKING')
 	return_to_start_state()

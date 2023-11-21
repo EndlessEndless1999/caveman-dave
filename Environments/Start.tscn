@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://whacn58fgcth"]
+
+[ext_resource type="Script" path="res://Scripts/Classes/GameManager.gd" id="1_igexs"]
+[ext_resource type="PackedScene" uid="uid://dbr0cxg7ncbb2" path="res://Environments/World.tscn" id="1_ylnll"]
+[ext_resource type="PackedScene" uid="uid://cajipcus8tleu" path="res://Assets/pause_menu.tscn" id="2_in2v7"]
+
+[node name="GameManager" type="Node"]
+process_mode = 3
+script = ExtResource("1_igexs")
+
+[node name="World" parent="." instance=ExtResource("1_ylnll")]
+process_mode = 1
+
+[node name="PauseMenuCanvas" parent="." instance=ExtResource("2_in2v7")]
+
+[node name="PauseMenu" parent="PauseMenuCanvas" index="0" node_paths=PackedStringArray("game_manager")]
+game_manager = NodePath("../..")
+
+[editable path="PauseMenuCanvas"]
