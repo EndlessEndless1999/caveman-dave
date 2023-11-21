@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://tkxknou3iwkq"]
+
+[ext_resource type="Script" path="res://Scripts/ActorScripts/ActorStateScripts/Fly/FLY_PATROL.gd" id="1_ix27v"]
+
+[node name="FLY_PATROL" type="Node"]
+script = ExtResource("1_ix27v")

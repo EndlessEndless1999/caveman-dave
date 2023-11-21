@@ -19,7 +19,6 @@ func _process(delta):
 	movement_vector = movement_vector.normalized()
 	body_to_move.velocity = movement_vector * max_speed
 	
-	body_to_move.gravity(delta)
 	
 	body_to_move.move_and_slide()
 

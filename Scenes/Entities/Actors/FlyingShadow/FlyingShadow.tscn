@@ -1,0 +1,52 @@
+[gd_scene load_steps=10 format=3 uid="uid://djn86vjehoicg"]
+
+[ext_resource type="Script" path="res://Scripts/ActorScripts/FlyingShadow.gd" id="1_miwio"]
+[ext_resource type="Texture2D" uid="uid://uachrx165rup" path="res://icon.svg" id="2_n0d0t"]
+[ext_resource type="Script" path="res://Scripts/ActorScripts/FlyingShadowSM.gd" id="3_i5fu1"]
+[ext_resource type="PackedScene" uid="uid://cdsqp77ceppjh" path="res://Scenes/Components/ActorStates/FLY_IDLE.tscn" id="3_y630v"]
+[ext_resource type="Script" path="res://Scripts/ComponentScripts/CharacterDetector.gd" id="4_lk2we"]
+[ext_resource type="PackedScene" uid="uid://tkxknou3iwkq" path="res://Scenes/Components/ActorStates/FLY_PATROL.tscn" id="5_vf6ao"]
+[ext_resource type="Script" path="res://Scripts/ComponentScripts/CharacterMover.gd" id="5_w6rkf"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_mugxf"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_digje"]
+radius = 56.8595
+
+[node name="FlyingShadow" type="CharacterBody2D" node_paths=PackedStringArray("character_detector", "character_mover")]
+script = ExtResource("1_miwio")
+character_detector = NodePath("CharacterDetector")
+character_mover = NodePath("CharacterMover")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.140625, 0.148438)
+texture = ExtResource("2_n0d0t")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_mugxf")
+
+[node name="STATES" type="Node" parent="."]
+script = ExtResource("3_i5fu1")
+
+[node name="FLY_IDLE" parent="STATES" instance=ExtResource("3_y630v")]
+
+[node name="FLY_PATROL" parent="STATES" instance=ExtResource("5_vf6ao")]
+
+[node name="CharacterDetector" type="Area2D" parent="."]
+script = ExtResource("4_lk2we")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterDetector"]
+shape = SubResource("CircleShape2D_digje")
+
+[node name="CharacterMover" type="Node" parent="." node_paths=PackedStringArray("body_to_move")]
+script = ExtResource("5_w6rkf")
+body_to_move = NodePath("..")
+max_speed = 50.0
+
+[node name="PatrolNodes" type="Node" parent="."]
+
+[node name="IdleTimer" type="Timer" parent="."]
+
+[node name="Label" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 23.0

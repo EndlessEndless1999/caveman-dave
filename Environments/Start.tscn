@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Scripts/Classes/GameManager.gd" id="1_igexs"]
 [ext_resource type="PackedScene" uid="uid://dbr0cxg7ncbb2" path="res://Environments/World.tscn" id="1_ylnll"]
-[ext_resource type="PackedScene" uid="uid://cajipcus8tleu" path="res://Assets/pause_menu.tscn" id="2_in2v7"]
+[ext_resource type="PackedScene" uid="uid://cajipcus8tleu" path="res://Tools/pause_menu.tscn" id="2_in2v7"]
 
 [node name="GameManager" type="Node"]
 process_mode = 3

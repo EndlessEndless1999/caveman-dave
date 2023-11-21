@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://cdsqp77ceppjh"]
+
+[ext_resource type="Script" path="res://Scripts/ActorScripts/ActorStateScripts/Fly/FLY_IDLE.gd" id="1_0jrrm"]
+
+[node name="FLY_IDLE" type="Node"]
+script = ExtResource("1_0jrrm")

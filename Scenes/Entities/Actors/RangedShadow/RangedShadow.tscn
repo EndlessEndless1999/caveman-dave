@@ -1,0 +1,3 @@
+[gd_scene format=3 uid="uid://dtsgyxc87j53u"]
+
+[node name="RangedShadow" type="CharacterBody2D"]
