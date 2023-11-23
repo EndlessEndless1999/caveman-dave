@@ -15,13 +15,17 @@ func update(delta):
 	if Actor.can_see_enemies():
 		return STATES.JUMP_ATTACK
 		Actor.timer.start(Actor.time_till_idle)
-	return null
+	
+	if Actor.is_jumping:
+		Actor.character_mover.jump()
 	
 	var our_pos = Actor.global_position
 	var next_patrol_pos = Actor.patrol_points[Actor.patrol_index]
 	
 	Actor.character_mover.move_to_position(next_patrol_pos)
 #	print(next_patrol_pos)
+	
+	Actor.gravity(delta)
 	
 	next_patrol_pos.y = our_pos.y
 	if our_pos.distance_to(next_patrol_pos) < 1:

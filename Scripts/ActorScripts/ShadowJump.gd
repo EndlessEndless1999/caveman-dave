@@ -8,6 +8,8 @@ var current_target : Player
 @export var character_detector : CharacterDetector
 var vision_manager
 @export var character_mover : CharacterMover
+@export var ground_detector : GroundDetector
+@export var jump_blocked_detector : JumpBlockedDetector
 
 var start_pos : Vector2
 var start_facing_dir : Vector2
@@ -21,6 +23,8 @@ var last_attack_time = 0.0
 
 @export var time_till_idle = 5
 var last_time_target_visible = 0.0
+
+var is_jumping : bool = false
 
 var health = 3
 
@@ -40,7 +44,7 @@ func _ready():
 	for state in STATES.get_children():
 		state.STATES = STATES
 		state.Actor = self
-	current_state = STATES.FLY_IDLE
+	current_state = STATES.JUMP_IDLE
 		# INITIALISING REFERENCES IN STATES TO PLAYER
 	start_pos = global_position
 	
@@ -57,6 +61,8 @@ func _ready():
 func _physics_process(delta):
 	change_state(current_state.update(delta))
 	$Label.text = str(current_state.get_name())
+	determine_jump(delta)
+	gravity(delta)
 
 func change_state(input_state):
 	if input_state != null:
@@ -65,12 +71,23 @@ func change_state(input_state):
 		
 		prev_state.exit_state()
 		current_state.enter_state()
+		
+		
 
 func gravity(delta):
 	if not is_on_floor():
 		velocity.y += gravity_value * delta
 	else:
-		velocity.y = 0
+		pass
+
+func determine_jump(delta):
+	if not is_on_floor():
+		is_jumping = false
+	
+	elif not ground_detector.has_overlapping_bodies():
+		is_jumping = true
+	else:
+		is_jumping = false
 
 
 #VISION FUNCTIONS

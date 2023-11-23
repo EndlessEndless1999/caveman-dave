@@ -15,6 +15,9 @@ func update(delta):
 	if Actor.can_see_enemies():
 		return STATES.JUMP_ATTACK
 	
+	if Actor.is_jumping:
+		return STATES.JUMP
+	
 	if Actor.character_mover.move_to_position(Actor.start_pos):
 		return STATES.JUMP_PATROL
 	else:

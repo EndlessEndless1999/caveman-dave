@@ -14,3 +14,7 @@ func update(delta):
 
 func enter_state():
 	Player.velocity.y = Player.JUMP_VELOCITY 
+
+
+func _on_jump_timer_timeout():
+	pass # Replace with function body.

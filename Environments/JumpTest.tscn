@@ -1,0 +1,32 @@
+[gd_scene load_steps=3 format=3 uid="uid://cfn0a1pf1k1jt"]
+
+[ext_resource type="PackedScene" uid="uid://cnpbnmr26urjn" path="res://Scenes/Entities/Actors/ShadowJump/ShadowJump.tscn" id="1_cba3g"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jetbj"]
+size = Vector2(116, 20)
+
+[node name="JumpTest" type="Node2D"]
+
+[node name="Area2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(58, 171)
+shape = SubResource("RectangleShape2D_jetbj")
+
+[node name="Area2D2" type="StaticBody2D" parent="."]
+position = Vector2(172, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D2"]
+position = Vector2(77, 171)
+shape = SubResource("RectangleShape2D_jetbj")
+
+[node name="Shadow_Jump" parent="." instance=ExtResource("1_cba3g")]
+position = Vector2(20, 154)
+
+[node name="Marker2D" type="Marker2D" parent="Shadow_Jump/PatrolNodes" index="0"]
+position = Vector2(300, 153)
+
+[node name="Marker2D2" type="Marker2D" parent="Shadow_Jump/PatrolNodes" index="1"]
+position = Vector2(9, 157)
+
+[editable path="Shadow_Jump"]

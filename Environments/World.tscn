@@ -69,10 +69,10 @@ position = Vector2(0, -0.5)
 max_speed = 50.0
 
 [node name="Marker2D" type="Marker2D" parent="Shadow/PatrolNodes" index="0"]
-position = Vector2(281, 214)
+position = Vector2(281, 195)
 
 [node name="Marker2D2" type="Marker2D" parent="Shadow/PatrolNodes" index="1"]
-position = Vector2(162, 214)
+position = Vector2(162, 195)
 
 [node name="ShadowHitBox" type="Area2D" parent="."]
 position = Vector2(126, 204)

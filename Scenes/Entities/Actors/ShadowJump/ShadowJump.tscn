@@ -1,18 +1,40 @@
-[gd_scene load_steps=9 format=3 uid="uid://cnpbnmr26urjn"]
+[gd_scene load_steps=14 format=3 uid="uid://cnpbnmr26urjn"]
 
 [ext_resource type="Script" path="res://Scripts/ActorScripts/ShadowJump.gd" id="1_ipxvw"]
 [ext_resource type="Script" path="res://Scripts/ComponentScripts/CharacterDetector.gd" id="1_x6x3o"]
 [ext_resource type="Script" path="res://Scripts/ComponentScripts/CharacterMover.gd" id="2_8d8qo"]
+[ext_resource type="PackedScene" uid="uid://baverd1fs0i6k" path="res://Scenes/Components/ActorStates/JUMP.tscn" id="3_c1qxf"]
 [ext_resource type="Texture2D" uid="uid://uachrx165rup" path="res://icon.svg" id="3_hu0u6"]
 [ext_resource type="Script" path="res://Scripts/ActorScripts/ShadowJumpSM.gd" id="5_bbni3"]
 [ext_resource type="PackedScene" uid="uid://dhb2naig70y2n" path="res://Scenes/Components/ActorStates/JUMP_IDLE.tscn" id="6_wd0c5"]
 [ext_resource type="PackedScene" uid="uid://c1lm6g3hqsxgm" path="res://Scenes/Components/ActorStates/JUMP_PATROL.tscn" id="7_3o2pp"]
+[ext_resource type="Script" path="res://Scripts/ComponentScripts/GroundDetector.gd" id="8_rt1fs"]
+[ext_resource type="Script" path="res://Scripts/ComponentScripts/JumpBlockedDetector.gd" id="9_a3qv4"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_rxabs"]
 radius = 6.08276
 
-[node name="Shadow_Jump" type="CharacterBody2D"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_s38k8"]
+size = Vector2(7, 6)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_37rej"]
+size = Vector2(7, 7)
+
+[node name="Shadow_Jump" type="CharacterBody2D" node_paths=PackedStringArray("character_detector", "character_mover", "ground_detector", "jump_blocked_detector")]
 script = ExtResource("1_ipxvw")
+character_detector = NodePath("CharacterDetector")
+character_mover = NodePath("CharacterMover")
+ground_detector = NodePath("GroundDetector")
+jump_blocked_detector = NodePath("JumpBlockedDetector")
+
+[node name="STATES" type="Node" parent="."]
+script = ExtResource("5_bbni3")
+
+[node name="JUMP_IDLE" parent="STATES" instance=ExtResource("6_wd0c5")]
+
+[node name="JUMP_PATROL" parent="STATES" instance=ExtResource("7_3o2pp")]
+
+[node name="JUMP" parent="STATES" instance=ExtResource("3_c1qxf")]
 
 [node name="CharacterDetector" type="Area2D" parent="."]
 script = ExtResource("1_x6x3o")
@@ -22,6 +44,7 @@ script = ExtResource("1_x6x3o")
 [node name="CharacterMover" type="Node" parent="." node_paths=PackedStringArray("body_to_move")]
 script = ExtResource("2_8d8qo")
 body_to_move = NodePath("..")
+max_speed = 50.0
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(0.0859375, 0.09375)
@@ -37,9 +60,18 @@ one_shot = true
 offset_right = 40.0
 offset_bottom = 23.0
 
-[node name="STATES" type="Node" parent="."]
-script = ExtResource("5_bbni3")
+[node name="GroundDetector" type="Area2D" parent="."]
+collision_layer = 0
+script = ExtResource("8_rt1fs")
 
-[node name="JUMP_IDLE" parent="STATES" instance=ExtResource("6_wd0c5")]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GroundDetector"]
+position = Vector2(9, 9)
+shape = SubResource("RectangleShape2D_s38k8")
 
-[node name="JUMP_PATROL" parent="STATES" instance=ExtResource("7_3o2pp")]
+[node name="JumpBlockedDetector" type="Area2D" parent="."]
+collision_layer = 0
+script = ExtResource("9_a3qv4")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="JumpBlockedDetector"]
+position = Vector2(9, -19)
+shape = SubResource("RectangleShape2D_37rej")

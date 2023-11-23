@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://baverd1fs0i6k"]
+
+[ext_resource type="Script" path="res://Scripts/ActorScripts/ActorStateScripts/Ground/JUMP.gd" id="1_evsbl"]
+
+[node name="JUMP" type="Node"]
+script = ExtResource("1_evsbl")
+
+[node name="Timer" type="Timer" parent="."]
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
