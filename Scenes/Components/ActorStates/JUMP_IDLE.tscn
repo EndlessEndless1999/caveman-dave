@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://dhb2naig70y2n"]
+
+[ext_resource type="Script" path="res://Scripts/ActorScripts/ActorStateScripts/Ground/IDLE.gd" id="1_herpu"]
+
+[node name="JUMP_IDLE" type="Node"]
+script = ExtResource("1_herpu")

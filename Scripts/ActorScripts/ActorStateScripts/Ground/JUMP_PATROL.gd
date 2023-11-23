@@ -13,7 +13,7 @@ func _process(delta):
 
 func update(delta):
 	if Actor.can_see_enemies():
-		return STATES.FLY_ATTACK
+		return STATES.JUMP_ATTACK
 		Actor.timer.start(Actor.time_till_idle)
 	return null
 	

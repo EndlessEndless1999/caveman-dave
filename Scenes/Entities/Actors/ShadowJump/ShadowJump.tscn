@@ -1,0 +1,45 @@
+[gd_scene load_steps=9 format=3 uid="uid://cnpbnmr26urjn"]
+
+[ext_resource type="Script" path="res://Scripts/ActorScripts/ShadowJump.gd" id="1_ipxvw"]
+[ext_resource type="Script" path="res://Scripts/ComponentScripts/CharacterDetector.gd" id="1_x6x3o"]
+[ext_resource type="Script" path="res://Scripts/ComponentScripts/CharacterMover.gd" id="2_8d8qo"]
+[ext_resource type="Texture2D" uid="uid://uachrx165rup" path="res://icon.svg" id="3_hu0u6"]
+[ext_resource type="Script" path="res://Scripts/ActorScripts/ShadowJumpSM.gd" id="5_bbni3"]
+[ext_resource type="PackedScene" uid="uid://dhb2naig70y2n" path="res://Scenes/Components/ActorStates/JUMP_IDLE.tscn" id="6_wd0c5"]
+[ext_resource type="PackedScene" uid="uid://c1lm6g3hqsxgm" path="res://Scenes/Components/ActorStates/JUMP_PATROL.tscn" id="7_3o2pp"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_rxabs"]
+radius = 6.08276
+
+[node name="Shadow_Jump" type="CharacterBody2D"]
+script = ExtResource("1_ipxvw")
+
+[node name="CharacterDetector" type="Area2D" parent="."]
+script = ExtResource("1_x6x3o")
+
+[node name="PatrolNodes" type="Node" parent="."]
+
+[node name="CharacterMover" type="Node" parent="." node_paths=PackedStringArray("body_to_move")]
+script = ExtResource("2_8d8qo")
+body_to_move = NodePath("..")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.0859375, 0.09375)
+texture = ExtResource("3_hu0u6")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_rxabs")
+
+[node name="IdleTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="Label" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="STATES" type="Node" parent="."]
+script = ExtResource("5_bbni3")
+
+[node name="JUMP_IDLE" parent="STATES" instance=ExtResource("6_wd0c5")]
+
+[node name="JUMP_PATROL" parent="STATES" instance=ExtResource("7_3o2pp")]
