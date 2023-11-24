@@ -13,14 +13,9 @@ func _process(delta):
 
 func update(delta):
 	if Actor.can_see_enemies():
-		return STATES.JUMP_ATTACK
+		return STATES.SHOOT
 		Actor.timer.start(Actor.time_till_idle)
 	
-	if Actor.is_jumping:
-		Actor.character_mover.jump()
-		print('JUMPED')
-		Actor.velocity.x = 0
-		
 	
 	var our_pos = Actor.global_position
 	var next_patrol_pos = Actor.patrol_points[Actor.patrol_index]

@@ -1,3 +1,51 @@
-[gd_scene format=3 uid="uid://dtsgyxc87j53u"]
+[gd_scene load_steps=10 format=3 uid="uid://dtsgyxc87j53u"]
 
-[node name="RangedShadow" type="CharacterBody2D"]
+[ext_resource type="Script" path="res://Scripts/ActorScripts/RangedShadowSM.gd" id="1_odekt"]
+[ext_resource type="Script" path="res://Scripts/ActorScripts/RangedShadow.gd" id="1_rcavr"]
+[ext_resource type="PackedScene" uid="uid://ni4gdl2mkd2u" path="res://Scenes/Components/ActorStates/GROUND_IDLE.tscn" id="2_hh3d8"]
+[ext_resource type="Script" path="res://Scripts/ComponentScripts/CharacterMover.gd" id="2_r3yxh"]
+[ext_resource type="PackedScene" uid="uid://cik3wk5aflt7i" path="res://Scenes/Components/ActorStates/GROUND_PATROL.tscn" id="3_be3pd"]
+[ext_resource type="Script" path="res://Scripts/ComponentScripts/CharacterDetector.gd" id="3_qm083"]
+[ext_resource type="PackedScene" uid="uid://bhbg4btfscj2r" path="res://Scenes/Components/ActorStates/SHOOT.tscn" id="4_n383l"]
+[ext_resource type="Texture2D" uid="uid://uachrx165rup" path="res://icon.svg" id="7_i4o1u"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_odpum"]
+radius = 8.0
+
+[node name="RangedShadow" type="CharacterBody2D" node_paths=PackedStringArray("character_detector", "character_mover")]
+script = ExtResource("1_rcavr")
+character_detector = NodePath("CharacterDetector")
+character_mover = NodePath("CharacterMover")
+
+[node name="STATES" type="Node" parent="."]
+script = ExtResource("1_odekt")
+
+[node name="GROUND_IDLE" parent="STATES" instance=ExtResource("2_hh3d8")]
+script = null
+
+[node name="GROUND_PATROL" parent="STATES" instance=ExtResource("3_be3pd")]
+
+[node name="SHOOT" parent="STATES" instance=ExtResource("4_n383l")]
+
+[node name="PatrolNodes" type="Node" parent="."]
+
+[node name="CharacterMover" type="Node" parent="." node_paths=PackedStringArray("body_to_move")]
+script = ExtResource("2_r3yxh")
+body_to_move = NodePath("..")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-3.8147e-06, -3.8147e-06)
+scale = Vector2(0.117188, 0.109375)
+texture = ExtResource("7_i4o1u")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_odpum")
+
+[node name="IdleTimer" type="Timer" parent="."]
+
+[node name="CharacterDetector" type="Area2D" parent="."]
+script = ExtResource("3_qm083")
+
+[node name="Label" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 23.0

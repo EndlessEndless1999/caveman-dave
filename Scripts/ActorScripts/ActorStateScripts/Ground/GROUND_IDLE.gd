@@ -1,5 +1,5 @@
 extends ActorState
-
+class_name GroundIdle
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -13,7 +13,7 @@ func _process(delta):
 
 func update(delta):
 	if Actor.can_see_enemies():
-		return STATES.SHOOT
+		return STATES.JUMP_ATTACK
 	
 	
 	if Actor.character_mover.move_to_position(Actor.start_pos):

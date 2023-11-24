@@ -10,15 +10,16 @@ func _ready():
 func _process(delta):
 	pass
 
+func enter_state():
+	spawn_projectile()
+
+func exit_state():
+	pass
+
 
 func update(delta):
-	if Actor.can_see_enemies():
-		return STATES.SHOOT
-	
-	
-	if Actor.character_mover.move_to_position(Actor.start_pos):
-		return STATES.JUMP_PATROL
-	else:
-		#POSSIBLY WILL NEED TO FACE CORRECT DIRECTION
-		pass
 	return null
+
+
+func spawn_projectile():
+	pass

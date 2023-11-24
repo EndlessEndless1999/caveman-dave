@@ -36,6 +36,9 @@ script = ExtResource("5_bbni3")
 
 [node name="JUMP" parent="STATES" instance=ExtResource("3_c1qxf")]
 
+[node name="Timer" parent="STATES/JUMP" index="0"]
+one_shot = true
+
 [node name="CharacterDetector" type="Area2D" parent="."]
 script = ExtResource("1_x6x3o")
 
@@ -75,3 +78,5 @@ script = ExtResource("9_a3qv4")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="JumpBlockedDetector"]
 position = Vector2(9, -19)
 shape = SubResource("RectangleShape2D_37rej")
+
+[editable path="STATES/JUMP"]

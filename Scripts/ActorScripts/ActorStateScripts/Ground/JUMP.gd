@@ -8,7 +8,7 @@ var timeout : bool = false
 
 func enter_state():
 	Actor.velocity.x = 0
-	Actor.velocity.y += -1000
+	Actor.velocity.y = -200
 	timer.start()
 	print('JUMP')
 	print(Actor.velocity)
@@ -17,8 +17,8 @@ func exit_state():
 	timeout = false
 
 func update(delta):
-	if Actor.is_on_floor() and timeout:
-		return STATES.JUMP_PATROL
+#	if Actor.is_on_floor() and timeout:
+#		return STATES.JUMP_PATROL
 	
 	Actor.move_and_slide()
 	

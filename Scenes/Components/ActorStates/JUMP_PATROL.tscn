@@ -4,3 +4,6 @@
 
 [node name="JUMP_PATROL" type="Node"]
 script = ExtResource("1_b4ma3")
+
+[node name="JumpTimer" type="Timer" parent="."]
+one_shot = true

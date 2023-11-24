@@ -3,6 +3,7 @@ class_name State
 
 var STATES = null
 var Player = null
+var Animation_Player = null
 
 func enter_state():
 	pass

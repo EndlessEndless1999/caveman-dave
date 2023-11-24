@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://cik3wk5aflt7i"]
+
+[ext_resource type="Script" path="res://Scripts/ActorScripts/ActorStateScripts/Ground/GROUND_PATROL.gd" id="1_wb01p"]
+
+[node name="GROUND_PATROL" type="Node"]
+script = ExtResource("1_wb01p")

@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://bhbg4btfscj2r"]
+
+[ext_resource type="Script" path="res://Scripts/ActorScripts/ActorStateScripts/Generic/SHOOT.gd" id="1_lysbw"]
+
+[node name="SHOOT" type="Node"]
+script = ExtResource("1_lysbw")

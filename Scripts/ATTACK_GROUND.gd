@@ -12,14 +12,15 @@ func update(delta):
 
 
 func enter_state():
-	timer.start()
 	STATES.hammer_hit_box.attacking = true
+	Animation_Player.play('GROUND_ATTACK')
 
 func exit_state():
 	attacking = true
 	STATES.hammer_hit_box.attacking = false
+	Animation_Player.stop()
 
 
 
-func _on_timer_timeout():
+func animation_finished():
 	attacking = false

@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://ni4gdl2mkd2u"]
+
+[ext_resource type="Script" path="res://Scripts/ActorScripts/ActorStateScripts/Ground/GROUND_IDLE.gd" id="1_v4ao4"]
+
+[node name="GROUND_IDLE" type="Node"]
+script = ExtResource("1_v4ao4")

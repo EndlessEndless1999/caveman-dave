@@ -17,16 +17,25 @@ shape = SubResource("RectangleShape2D_jetbj")
 position = Vector2(172, 0)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D2"]
-position = Vector2(77, 171)
+position = Vector2(12, 171)
 shape = SubResource("RectangleShape2D_jetbj")
 
 [node name="Shadow_Jump" parent="." instance=ExtResource("1_cba3g")]
 position = Vector2(20, 154)
 
+[node name="Timer" parent="Shadow_Jump/STATES/JUMP" index="0"]
+wait_time = 0.2
+
 [node name="Marker2D" type="Marker2D" parent="Shadow_Jump/PatrolNodes" index="0"]
-position = Vector2(300, 153)
+position = Vector2(235, 156)
 
 [node name="Marker2D2" type="Marker2D" parent="Shadow_Jump/PatrolNodes" index="1"]
 position = Vector2(9, 157)
 
+[node name="CharacterMover" parent="Shadow_Jump" index="3" node_paths=PackedStringArray("JumpTimer")]
+JumpTimer = NodePath("../STATES/JUMP/Timer")
+
+[connection signal="timeout" from="Shadow_Jump/STATES/JUMP/Timer" to="Shadow_Jump/CharacterMover" method="_on_timer_timeout"]
+
 [editable path="Shadow_Jump"]
+[editable path="Shadow_Jump/STATES/JUMP"]

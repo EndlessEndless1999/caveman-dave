@@ -29,12 +29,14 @@ var prev_state = null
 
 #Nodes
 @onready var STATES = $STATES
+@onready var Animation_Player = $AnimationPlayer
 @onready var Raycasts = $Raycasts
 
 func _ready():
 	for state in STATES.get_children():
 		state.STATES = STATES
 		state.Player = self
+		state.Animation_Player = Animation_Player
 	current_state = STATES.IDLE
 		# INITIALISING REFERENCES IN STATES TO PLAYER
 
