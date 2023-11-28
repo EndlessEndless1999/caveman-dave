@@ -24,11 +24,8 @@ var last_direction = Vector2.RIGHT
 var can_dash = true
 
 #HOOKSHOT
-var hookshot_position : Vector2 = Vector2.ZERO
 var hooked : bool = false
 var hooking : bool = false
-var hookshot_length = 500
-var current_hookshot_length 
 
 #states
 var current_state = null
@@ -48,7 +45,6 @@ func _ready():
 		state.Animation_Player = Animation_Player
 	current_state = STATES.IDLE
 		# INITIALISING REFERENCES IN STATES TO PLAYER
-	current_hookshot_length = hookshot_length
 
 func _physics_process(delta):
 	player_input()

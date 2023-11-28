@@ -1,9 +1,11 @@
-[gd_scene load_steps=3 format=3 uid="uid://d0upr0lfkkfff"]
+[gd_scene load_steps=4 format=3 uid="uid://d0upr0lfkkfff"]
 
 [ext_resource type="PackedScene" uid="uid://c6rfy6ymyjf5e" path="res://Scenes/Entities/Player/Character.tscn" id="1_o785y"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6ekvx"]
 size = Vector2(320, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0ue2e"]
 
 [node name="CharacterTestRoom" type="Node2D"]
 
@@ -16,3 +18,11 @@ shape = SubResource("RectangleShape2D_6ekvx")
 
 [node name="CharacterBody" parent="." instance=ExtResource("1_o785y")]
 position = Vector2(160, 149)
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="."]
+position = Vector2(198, 104)
+collision_layer = 256
+collision_mask = 257
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2"]
+shape = SubResource("RectangleShape2D_0ue2e")
