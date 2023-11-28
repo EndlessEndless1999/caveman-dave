@@ -3,6 +3,17 @@ class_name RangedShadow
 
 var gravity_value = ProjectSettings.get_setting("physics/2d/default_gravity")
 
+
+#FLIP CHARACTER
+@export var flip_node : Node2D 
+@export var move_direction : Vector2 = Vector2.RIGHT:
+	set(new_direction):
+		if(move_direction != new_direction):
+			move_direction = new_direction
+			move_direction.x = clamp(move_direction.x, -1, 1)
+			flip_node.scale.x = move_direction.x
+			print(flip_node.scale.x)
+
 #INITIALISABLES
 var current_target : Player
 @export var character_detector : CharacterDetector
@@ -23,11 +34,14 @@ var last_attack_time = 0.0
 @export var time_till_idle = 5
 var last_time_target_visible = 0.0
 
+var stopped : bool = false
+var shooting : bool = false
 
 var health = 3
 
 @onready var label = $Label
 @onready var timer = $IdleTimer
+@onready var raycast = $FlipNode/RayCast2D
 
 #STATE MACHINE
 @onready var STATES = $STATES
@@ -42,7 +56,7 @@ func _ready():
 	for state in STATES.get_children():
 		state.STATES = STATES
 		state.Actor = self
-	current_state = STATES.JUMP_IDLE
+	current_state = STATES.IDLE
 		# INITIALISING REFERENCES IN STATES TO PLAYER
 	start_pos = global_position
 	
@@ -57,6 +71,7 @@ func _ready():
 
 
 func _physics_process(delta):
+	move_direction = velocity
 	change_state(current_state.update(delta))
 	$Label.text = str(current_state.get_name())
 	gravity(delta)
@@ -94,3 +109,7 @@ func get_visible_enemies():
 func is_dead():
 	return false
 
+
+
+func _on_shoot_timer_timeout():
+	shooting = true

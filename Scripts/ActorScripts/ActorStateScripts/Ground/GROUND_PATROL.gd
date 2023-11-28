@@ -1,6 +1,6 @@
 extends ActorState
 
-
+@export var shoot_timer : Timer
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
@@ -10,8 +10,15 @@ func _ready():
 func _process(delta):
 	pass
 
+func enter_state():
+	shoot_timer.start()
 
 func update(delta):
+	
+	if Actor.shooting:
+		return STATES.SHOOT
+	
+	
 	if Actor.can_see_enemies():
 		return STATES.SHOOT
 		Actor.timer.start(Actor.time_till_idle)

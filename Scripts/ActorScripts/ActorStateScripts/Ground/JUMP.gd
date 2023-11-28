@@ -25,5 +25,5 @@ func update(delta):
 	return null
 
 
-func _on_timer_timeout():
+dfunc _on_timer_timeout():
 	timeout = true

@@ -9,7 +9,7 @@ func gravity(delta):
 	else:
 		velocity.y = 0
 
-enum STATES {IDLE, PATROL, ATTACK, DEAD}
+enum STATES {IDLE, PATROL, ATTACK, HIT, DEAD}
 var current_state = STATES.IDLE
 
 #INITIALISABLE VARIABLES
@@ -18,11 +18,16 @@ var current_target : Player
 var vision_manager
 @export var character_mover : CharacterMover
 
+@export var knockback_velocity : Vector2 = Vector2(100, 0)
+
 var start_pos : Vector2
 var start_facing_dir : Vector2
 
 var patrol_points = []
 var patrol_index = 0
+
+var hit : bool = false
+var stopped : bool = false
 
 @export var attack_range = 50
 @export var attack_rate = 1.0
@@ -58,6 +63,9 @@ func _process(delta):
 		STATES.ATTACK:
 			process_attack_state(delta)
 			label.text = 'ATTACK'
+		STATES.HIT:
+			process_hit_state(delta)
+			label.text = 'HIT'
 		STATES.DEAD:
 			process_dead_state(delta)
 			label.text = 'DEAD'
@@ -73,6 +81,10 @@ func set_patrol_state():
 func set_attack_state():
 	current_state = STATES.ATTACK
 
+func set_hit_state():
+	current_state = STATES.HIT
+	timer.start()
+
 func set_dead_state():
 	current_state = STATES.DEAD
 
@@ -80,6 +92,9 @@ func set_dead_state():
 
 
 func process_idle_state(delta):
+	if hit:
+		set_hit_state()
+	
 	if can_see_enemies():
 		set_attack_state()
 		return 
@@ -91,6 +106,9 @@ func process_idle_state(delta):
 		pass
 
 func process_patrol_state(delta):
+	if hit:
+		set_hit_state()
+	
 	if can_see_enemies():
 		set_attack_state()
 		timer.start(time_till_idle)
@@ -109,6 +127,10 @@ func process_patrol_state(delta):
 		print(patrol_index)
 
 func process_attack_state(delta):
+	if hit:
+		set_hit_state()
+		take_damage()
+	
 	if !is_instance_valid(current_target) or current_target.is_dead():
 		update_current_target()
 	
@@ -127,6 +149,17 @@ func process_attack_state(delta):
 		execute_attack()
 	else: 
 		character_mover.move_to_position(target_position)
+
+func process_hit_state(delta):
+	
+	velocity = knockback_velocity
+	
+	move_and_slide()
+	
+	
+	if !hit:
+		return_to_start_state()
+	
 
 func process_dead_state(delta):
 	pass
@@ -179,10 +212,15 @@ func execute_attack():
 	attack()
 
 func attack():
-	print('ATTACK')
+	pass
 
+func take_damage():
+	health -= 1
+	if health <= 0:
+		is_dead()
 
 func is_dead():
+	queue_free()
 	return current_state == STATES.DEAD
 
 
@@ -190,4 +228,6 @@ func is_dead():
 
 
 func _on_idle_timer_timeout():
+	print('TIMEOUT')
 	return_to_start_state()
+	hit = false

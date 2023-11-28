@@ -35,6 +35,7 @@ script = ExtResource("5_bbni3")
 [node name="JUMP_PATROL" parent="STATES" instance=ExtResource("7_3o2pp")]
 
 [node name="JUMP" parent="STATES" instance=ExtResource("3_c1qxf")]
+jump_speed = null
 
 [node name="Timer" parent="STATES/JUMP" index="0"]
 one_shot = true

@@ -23,12 +23,20 @@ var last_direction = Vector2.RIGHT
 #MECHANICS
 var can_dash = true
 
+#HOOKSHOT
+var hookshot_position : Vector2 = Vector2.ZERO
+var hooked : bool = false
+var hooking : bool = false
+var hookshot_length = 500
+var current_hookshot_length 
+
 #states
 var current_state = null
 var prev_state = null
 
 #Nodes
 @onready var STATES = $STATES
+@onready var Camera = $Camera2D
 @onready var Animation_Player = $AnimationPlayer
 @onready var Raycasts = $Raycasts
 
@@ -36,9 +44,11 @@ func _ready():
 	for state in STATES.get_children():
 		state.STATES = STATES
 		state.Player = self
+		state.Camera = Camera
 		state.Animation_Player = Animation_Player
 	current_state = STATES.IDLE
 		# INITIALISING REFERENCES IN STATES TO PLAYER
+	current_hookshot_length = hookshot_length
 
 func _physics_process(delta):
 	player_input()
@@ -109,6 +119,12 @@ func player_input():
 		dash_input = true
 	else: 
 		dash_input = false
+	
+	#hookshot
+	if Input.is_action_just_pressed("Hook"):
+		hooking = true
+	else:
+		hooking = false
 
 
 func is_dead():

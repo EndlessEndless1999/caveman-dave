@@ -1,0 +1,58 @@
+[gd_scene load_steps=7 format=3 uid="uid://baq2eytdbg81j"]
+
+[ext_resource type="PackedScene" uid="uid://cyqx6x803qvik" path="res://Tools/parallax.tscn" id="1_8p1vu"]
+[ext_resource type="PackedScene" uid="uid://c6rfy6ymyjf5e" path="res://Scenes/Entities/Player/Character.tscn" id="2_wf08r"]
+[ext_resource type="Texture2D" uid="uid://dkdrjmkn80mv" path="res://Assets/cloud_pralim_tile_big.png" id="3_uqr4k"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_v1xx2"]
+size = Vector2(1298, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_w8bmy"]
+size = Vector2(36, 11)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_faywt"]
+size = Vector2(72, 10)
+
+[node name="ParallaxTestScene" type="Node2D"]
+
+[node name="Parallax" parent="." instance=ExtResource("1_8p1vu")]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(649, 170)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(2, -63)
+shape = SubResource("RectangleShape2D_v1xx2")
+
+[node name="CharacterBody" parent="." instance=ExtResource("2_wf08r")]
+position = Vector2(159, 81)
+scale = Vector2(5, 5)
+
+[node name="Camera2D" parent="CharacterBody" index="2"]
+position_smoothing_enabled = true
+drag_horizontal_enabled = false
+drag_left_margin = 0.1
+drag_right_margin = 0.1
+
+[node name="Label" parent="CharacterBody" index="4"]
+visible = false
+
+[node name="Platforms" type="Node" parent="."]
+
+[node name="cloud_platform_small" type="StaticBody2D" parent="Platforms"]
+
+[node name="Sprite2D" type="Sprite2D" parent="Platforms/cloud_platform_small"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platforms/cloud_platform_small"]
+position = Vector2(305, 79.5)
+shape = SubResource("RectangleShape2D_w8bmy")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Platforms/cloud_platform_small"]
+position = Vector2(364, 52)
+shape = SubResource("RectangleShape2D_faywt")
+
+[node name="CloudPralimTileBig" type="Sprite2D" parent="."]
+position = Vector2(350, 71)
+texture = ExtResource("3_uqr4k")
+
+[editable path="CharacterBody"]

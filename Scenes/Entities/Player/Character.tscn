@@ -1,7 +1,8 @@
-[gd_scene load_steps=19 format=3 uid="uid://c6rfy6ymyjf5e"]
+[gd_scene load_steps=21 format=3 uid="uid://c6rfy6ymyjf5e"]
 
 [ext_resource type="Script" path="res://Scripts/Character.gd" id="1_gqh8n"]
 [ext_resource type="Texture2D" uid="uid://8el3f0qqov1m" path="res://Assets/character.png" id="2_t1kc4"]
+[ext_resource type="Script" path="res://Scripts/Classes/PlayerCamera.gd" id="3_7oqde"]
 [ext_resource type="Script" path="res://Scripts/STATES.gd" id="3_jxtp4"]
 [ext_resource type="PackedScene" uid="uid://d1yc45sfomloa" path="res://Scenes/Entities/Player/IDLE.tscn" id="3_nikui"]
 [ext_resource type="PackedScene" uid="uid://chkey6semamrv" path="res://Scenes/Entities/Player/MOVE.tscn" id="4_gn233"]
@@ -13,9 +14,40 @@
 [ext_resource type="PackedScene" uid="uid://giyu2lrnckoo" path="res://Scenes/Entities/Player/ATTACK_JUMP.tscn" id="11_uivd5"]
 [ext_resource type="PackedScene" uid="uid://2631l2aq8cim" path="res://Scenes/Entities/Player/ATTACK_FALL.tscn" id="12_4oq02"]
 [ext_resource type="PackedScene" uid="uid://dovg3su1qtc5g" path="res://Scenes/Components/hammer_hit_box.tscn" id="13_oanpp"]
+[ext_resource type="PackedScene" uid="uid://bff8dilo7acie" path="res://Scenes/Entities/Player/HOOK.tscn" id="14_o1myl"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0gu11"]
 size = Vector2(2.5, 3)
+
+[sub_resource type="Animation" id="Animation_1tgm5"]
+resource_name = "GROUND_ATTACK"
+length = 0.7
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 1, 2, 2, 3, 4]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("STATES/ATTACK_GROUND")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.7),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"animation_finished"
+}]
+}
 
 [sub_resource type="Animation" id="Animation_5qexa"]
 resource_name = "MOVE"
@@ -49,36 +81,6 @@ tracks/0/keys = {
 "values": [5]
 }
 
-[sub_resource type="Animation" id="Animation_1tgm5"]
-resource_name = "GROUND_ATTACK"
-length = 0.8
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
-"update": 1,
-"values": [0, 1, 1, 2, 3, 4, 4, 5]
-}
-tracks/1/type = "method"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("STATES/ATTACK_GROUND")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0.8),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": [],
-"method": &"animation_finished"
-}]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_5ou3m"]
 _data = {
 "GROUND_ATTACK": SubResource("Animation_1tgm5"),
@@ -104,6 +106,10 @@ hframes = 13
 frame = 5
 
 [node name="Camera2D" type="Camera2D" parent="."]
+drag_horizontal_enabled = true
+drag_vertical_enabled = true
+drag_top_margin = 0.75
+script = ExtResource("3_7oqde")
 
 [node name="STATES" type="Node" parent="." node_paths=PackedStringArray("hammer_hit_box")]
 script = ExtResource("3_jxtp4")
@@ -126,6 +132,9 @@ hammer_hit_box = NodePath("../HammerHitBox")
 [node name="ATTACK_JUMP" parent="STATES" instance=ExtResource("11_uivd5")]
 
 [node name="ATTACK_FALL" parent="STATES" instance=ExtResource("12_4oq02")]
+
+[node name="HOOK" parent="STATES" node_paths=PackedStringArray("hookshot") instance=ExtResource("14_o1myl")]
+hookshot = NodePath("../../Hookshot")
 
 [node name="Label" type="Label" parent="."]
 offset_right = 40.0
@@ -165,3 +174,25 @@ scale = Vector2(0.2, 0.2)
 libraries = {
 "": SubResource("AnimationLibrary_5ou3m")
 }
+
+[node name="Hookshot" type="Node2D" parent="."]
+position = Vector2(0, -1.5)
+rotation = -0.872665
+
+[node name="RayCast2D" type="RayCast2D" parent="Hookshot"]
+position = Vector2(-1.5, 1)
+rotation = 4.71239
+scale = Vector2(0.1, 0.1)
+target_position = Vector2(2.08165e-12, 500)
+
+[node name="RayCast2D2" type="RayCast2D" parent="Hookshot"]
+position = Vector2(-1.5, 1)
+rotation = 4.62512
+scale = Vector2(0.1, 0.1)
+target_position = Vector2(2.08165e-12, 500)
+
+[node name="RayCast2D3" type="RayCast2D" parent="Hookshot"]
+position = Vector2(-1.5, 1)
+rotation = 4.79966
+scale = Vector2(0.1, 0.1)
+target_position = Vector2(2.08165e-12, 500)

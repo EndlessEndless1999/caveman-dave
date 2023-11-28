@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://dtsgyxc87j53u"]
+[gd_scene load_steps=11 format=3 uid="uid://dtsgyxc87j53u"]
 
 [ext_resource type="Script" path="res://Scripts/ActorScripts/RangedShadowSM.gd" id="1_odekt"]
 [ext_resource type="Script" path="res://Scripts/ActorScripts/RangedShadow.gd" id="1_rcavr"]
@@ -8,24 +8,26 @@
 [ext_resource type="Script" path="res://Scripts/ComponentScripts/CharacterDetector.gd" id="3_qm083"]
 [ext_resource type="PackedScene" uid="uid://bhbg4btfscj2r" path="res://Scenes/Components/ActorStates/SHOOT.tscn" id="4_n383l"]
 [ext_resource type="Texture2D" uid="uid://uachrx165rup" path="res://icon.svg" id="7_i4o1u"]
+[ext_resource type="Script" path="res://Scripts/ActorScripts/ShadowHurtBox.gd" id="9_v33ca"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_odpum"]
 radius = 8.0
 
-[node name="RangedShadow" type="CharacterBody2D" node_paths=PackedStringArray("character_detector", "character_mover")]
+[node name="RangedShadow" type="CharacterBody2D" node_paths=PackedStringArray("flip_node", "character_detector", "character_mover")]
 script = ExtResource("1_rcavr")
+flip_node = NodePath("FlipNode")
 character_detector = NodePath("CharacterDetector")
 character_mover = NodePath("CharacterMover")
 
 [node name="STATES" type="Node" parent="."]
 script = ExtResource("1_odekt")
 
-[node name="GROUND_IDLE" parent="STATES" instance=ExtResource("2_hh3d8")]
-script = null
-
-[node name="GROUND_PATROL" parent="STATES" instance=ExtResource("3_be3pd")]
+[node name="GROUND_PATROL" parent="STATES" node_paths=PackedStringArray("shoot_timer") instance=ExtResource("3_be3pd")]
+shoot_timer = NodePath("../../ShootTimer")
 
 [node name="SHOOT" parent="STATES" instance=ExtResource("4_n383l")]
+
+[node name="GROUND_IDLE" parent="STATES" instance=ExtResource("2_hh3d8")]
 
 [node name="PatrolNodes" type="Node" parent="."]
 
@@ -49,3 +51,17 @@ script = ExtResource("3_qm083")
 [node name="Label" type="Label" parent="."]
 offset_right = 40.0
 offset_bottom = 23.0
+
+[node name="ShadowHitBox" type="Area2D" parent="."]
+script = ExtResource("9_v33ca")
+
+[node name="ShootTimer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+
+[node name="FlipNode" type="Node2D" parent="."]
+
+[node name="RayCast2D" type="RayCast2D" parent="FlipNode"]
+target_position = Vector2(40, 2.08165e-12)
+
+[connection signal="timeout" from="ShootTimer" to="." method="_on_shoot_timer_timeout"]

@@ -1,0 +1,28 @@
+[gd_scene load_steps=3 format=3 uid="uid://cfy8jv7ayqxpl"]
+
+[ext_resource type="PackedScene" uid="uid://dtsgyxc87j53u" path="res://Scenes/Entities/Actors/RangedShadow/RangedShadow.tscn" id="1_rgsn0"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_opc3x"]
+size = Vector2(329, 20)
+
+[node name="ranged_enemy_test_tscn" type="Node2D"]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(160, 170)
+shape = SubResource("RectangleShape2D_opc3x")
+
+[node name="RangedShadow" parent="." instance=ExtResource("1_rgsn0")]
+position = Vector2(51, 151)
+
+[node name="Marker2D" type="Marker2D" parent="RangedShadow/PatrolNodes" index="0"]
+position = Vector2(289, 152)
+
+[node name="Marker2D2" type="Marker2D" parent="RangedShadow/PatrolNodes" index="1"]
+position = Vector2(13, 153)
+
+[node name="CharacterMover" parent="RangedShadow" index="2"]
+max_speed = 40.0
+
+[editable path="RangedShadow"]

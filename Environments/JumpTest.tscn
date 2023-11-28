@@ -23,6 +23,9 @@ shape = SubResource("RectangleShape2D_jetbj")
 [node name="Shadow_Jump" parent="." instance=ExtResource("1_cba3g")]
 position = Vector2(20, 154)
 
+[node name="JUMP" parent="Shadow_Jump/STATES" index="2"]
+jump_speed = null
+
 [node name="Timer" parent="Shadow_Jump/STATES/JUMP" index="0"]
 wait_time = 0.2
 

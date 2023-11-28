@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://hmnr8i81d44f"]
+[gd_scene load_steps=10 format=3 uid="uid://hmnr8i81d44f"]
 
 [ext_resource type="Script" path="res://Scripts/ActorScripts/Shadow.gd" id="1_v6put"]
 [ext_resource type="Texture2D" uid="uid://uachrx165rup" path="res://icon.svg" id="1_vuh3c"]
 [ext_resource type="PackedScene" uid="uid://0rxn124nwln" path="res://Scenes/Components/character_detector.tscn" id="3_vua0y"]
 [ext_resource type="PackedScene" uid="uid://bsgtxkganwqtu" path="res://Scenes/Components/character_mover.tscn" id="4_liv1p"]
 [ext_resource type="Script" path="res://Scripts/IdleTimer.gd" id="5_ggwqw"]
+[ext_resource type="Script" path="res://Scripts/ActorScripts/ShadowHurtBox.gd" id="6_s2r42"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_8a3nk"]
 radius = 4.0
@@ -12,6 +13,8 @@ height = 12.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_24c66"]
 size = Vector2(90, 11)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lbt78"]
 
 [node name="Shadow" type="CharacterBody2D" node_paths=PackedStringArray("character_detector", "character_mover")]
 script = ExtResource("1_v6put")
@@ -42,10 +45,19 @@ offset_right = 40.0
 offset_bottom = 23.0
 
 [node name="IdleTimer" type="Timer" parent="."]
-wait_time = 0.1
+process_callback = 0
+wait_time = 0.2
 one_shot = true
 script = ExtResource("5_ggwqw")
 
+[node name="ShadowHitBox" type="Area2D" parent="." node_paths=PackedStringArray("Actor")]
+script = ExtResource("6_s2r42")
+Actor = NodePath("..")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ShadowHitBox"]
+shape = SubResource("RectangleShape2D_lbt78")
+
 [connection signal="timeout" from="IdleTimer" to="." method="_on_idle_timer_timeout"]
+[connection signal="area_entered" from="ShadowHitBox" to="ShadowHitBox" method="_on_area_entered"]
 
 [editable path="CharacterDetector"]

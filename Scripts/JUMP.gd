@@ -14,6 +14,7 @@ func update(delta):
 
 func enter_state():
 	Player.velocity.y = Player.JUMP_VELOCITY 
+	Camera.update_drag_vertical(true)
 
 
 func _on_jump_timer_timeout():

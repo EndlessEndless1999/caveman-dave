@@ -17,3 +17,4 @@ func update(delta):
 
 func enter_state():
 	Player.can_dash = true
+	Camera.update_drag_vertical(false)

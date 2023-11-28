@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://bff8dilo7acie"]
+
+[ext_resource type="Script" path="res://Scripts/HOOK.gd" id="1_algwv"]
+
+[node name="HOOK" type="Node"]
+script = ExtResource("1_algwv")

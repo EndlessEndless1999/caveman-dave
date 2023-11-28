@@ -17,6 +17,9 @@ func _process(delta):
 	if !is_instance_valid(body_to_move):
 		return
 	
+	if body_to_move.stopped:
+		return
+	
 	if body_to_move.is_on_floor():
 		#ISSUES WITH FLYING ENEMIES. SEPERATE MOVER SCRIPT FOR THEM.
 		var our_pos = body_to_move.global_position

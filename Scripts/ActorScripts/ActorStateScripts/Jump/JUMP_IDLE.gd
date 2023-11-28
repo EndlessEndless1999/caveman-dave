@@ -1,5 +1,5 @@
 extends ActorState
-class_name GroundIdle
+class_name JumpIdle
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -17,8 +17,18 @@ func update(delta):
 	
 	
 	if Actor.character_mover.move_to_position(Actor.start_pos):
-		return STATES.PATROL
+		return STATES.JUMP_PATROL
 	else:
 		#POSSIBLY WILL NEED TO FACE CORRECT DIRECTION
 		pass
-	return null
+	return nullextends Node
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta):
+	pass

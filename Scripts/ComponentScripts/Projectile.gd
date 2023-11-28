@@ -1,8 +1,7 @@
 extends Area2D
-class_name  ShadowHitBox
 
-@export var Actor : CharacterBody2D
-
+const RIGHT = Vector2.RIGHT
+@export var speed : int = 200
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
@@ -10,12 +9,5 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	pass
-
-
-func _on_area_entered(area):
-	if area is HammerHurtBox:
-		print('HURT BY HAMMER!')
-		Actor.hit = true 
-	else:
-		print('NOT WORKING')
+	var movement = RIGHT.rotated(rotation) * speed * delta
+	global_position += movement
