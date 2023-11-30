@@ -16,16 +16,23 @@ var attack_input = false
 
 #player_movement
 const SPEED = 70.0
+const MAX_SPEED = 200
 const JUMP_VELOCITY = -200.0
 const ATTACK_JUMP_VELOCITY = -100
 var last_direction = Vector2.RIGHT
+
 
 #MECHANICS
 var can_dash = true
 
 #HOOKSHOT
-var hooked : bool = false
 var hooking : bool = false
+
+var hook_pos : Vector2
+var hooked : bool = false
+var rope_length = 50
+var current_rope_length
+
 
 #states
 var current_state = null
@@ -45,11 +52,16 @@ func _ready():
 		state.Animation_Player = Animation_Player
 	current_state = STATES.IDLE
 		# INITIALISING REFERENCES IN STATES TO PLAYER
+	current_rope_length = rope_length
 
 func _physics_process(delta):
 	player_input()
 	change_state(current_state.update(delta))
 	$Label.text = str(current_state.get_name())
+	
+	velocity.x = clamp(velocity.x, -200, 500)
+	velocity.y = clamp(velocity.y, -200, 200)
+	
 	move_and_slide()
 
 func gravity(delta):
@@ -121,6 +133,13 @@ func player_input():
 		hooking = true
 	else:
 		hooking = false
+
+
+
+
+
+
+
 
 
 func is_dead():

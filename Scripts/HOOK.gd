@@ -1,83 +1,93 @@
 extends State
 
-@export var hookshot : Node2D
-@export var tip : CharacterBody2D
-var tip_location : Vector2
-var hookshot_position : Vector2 = Vector2.ZERO
-var hookshot_direction : Vector2 = Vector2.ZERO
-var hookshot_target : Vector2 
-@export var hookshot_pull = 105
-var hookshot_length = 500
-var hookshot_speed = 1
-var current_hookshot_length 
 
-const MAX_SPEED = 5
+#CLAMP SPEEDS AND TWEAK VALUES
 
-var chain_velocity = Vector2.ZERO
-var hookshot_hooked : bool = false
-var flying : bool = false
-var hooked : bool = false
+@onready var timer = $Timer
+@export var raycasts : Node2D
 
 
-func _ready():
-	current_hookshot_length = hookshot_length
-
-func update(delta):
-	Player.gravity(delta)
-	update_hookshot()
-	
-	if hooked:
-		chain_velocity = tip_location.normalized() * hookshot_pull
-		if chain_velocity.y > 0:
-			chain_velocity.y *= 0.55
-		else:
-			chain_velocity.y *= 1.65
-		
-		chain_velocity.x = clamp(chain_velocity.x, -MAX_SPEED, MAX_SPEED)
-		chain_velocity.y = clamp(chain_velocity.y, -MAX_SPEED, MAX_SPEED)
-		
-		Player.velocity += chain_velocity
-	return null
+var timeout : bool = false
 
 func enter_state():
-	hook()
+	print('ENTERING HOOK')
+	timer.start()
+
+	
+	Player.hook_pos = get_hook_pos()
+	
+	if Player.hook_pos:
+		Player.hooked = true
+		Player.current_rope_length = Player.global_position.distance_to(Player.hook_pos)
+
+func update(delta):
+	#draw_hook()
+	
+	if timeout:
+		return STATES.FALL
+	
+	if Player.hooked:
+		Player.gravity(delta)
+		swing(delta)
+		
+		Player.velocity *= 0.95 #SPEED OF SWING
+		
+	
+	return null
 
 func exit_state():
-	Animation_Player.stop()
+	timeout = false
 
-
-func hook():
-	var contact_points = []
-	for raycast in hookshot.get_children():
+func get_hook_pos():
+	for raycast : RayCast2D in raycasts.get_children():
 		if raycast.is_colliding():
-			contact_points.append(raycast.get_collision_point())
-			hookshot_hooked = true
-	print(contact_points)
-	shoot(contact_points[0])
+			return raycast.get_collision_point()
 
-func shoot(hookshot_direction):
-#	hookshot_target = hookshot_direction.normalized()
-	hookshot_target = Vector2(.5,-.5)
-	print(hookshot_target)
-	flying = true
-	tip.show()
-	tip_location = Player.global_position
-	print(tip.global_position)
+func swing(delta):
+	var radius = Player.global_position - Player.hook_pos
+	
+	print(radius.length())
+	
+	
+	if Player.velocity.length() < 0.1 or radius.length() < 10: 
+		print('STOPPING')
+		return
+	
+	var angle = acos(radius.dot(Player.velocity) / (radius.length() * Player.velocity.length()))
+	
+	var rad_velocity = cos(angle) * Player.velocity.length()
+	Player.velocity += radius.normalized() * -rad_velocity
+	
+	if Player.global_position.distance_to(Player.hook_pos) < Player.current_rope_length:
+		print('ROPE LENGTH')
+		Player.velocity += Player.hook_pos + radius.normalized() * Player.current_rope_length
+		
+	if Player.global_position.x > Player.hook_pos.x:
+		print('RETURNING')
+		return
+		
+	Player.velocity += (Player.hook_pos - Player.global_position).normalized() * 10000 * delta 
+	
+	Player.velocity.x = clamp(Player.velocity.x, -300, 1000)
+	Player.velocity.y = clamp(Player.velocity.y, -200, 200)
+	
+	
 
-func release_hook():
-	flying = false
-	hooked = false
 
-func update_hookshot():
-	tip.global_position = tip_location
-	if flying:
-		$Timer.start()
-		if tip.move_and_collide(hookshot_target * hookshot_speed):
-			hooked = true
-			flying = false
-	tip_location = tip.global_position
+func draw_hook():
+	var pos = Player.global_position 
+	
+	if Player.hooked:
+		Player.draw_line(Vector2(0, -16), Player.to_local(Player.hook_pos), Color(0.35, 0.7, 0.9), 3, true) #cyan
+	else:
+		return
+		
+	var colliding = raycasts.is_colliding()
+	var collide_point = raycasts.get_collision_point()
+	
+	if colliding and pos.distance_to(collide_point) < Player.rope_length:
+		Player.draw_line(Vector2(0, -16), Player.to_local(collide_point), Color(1,1,1,0.25), 0.5, true) #white
 
 
 func _on_timer_timeout():
-	
-	release_hook()
+	timeout = true

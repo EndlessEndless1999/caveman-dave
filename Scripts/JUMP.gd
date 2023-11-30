@@ -10,6 +10,9 @@ func update(delta):
 		return STATES.FALL
 	if Player.dash_input and Player.can_dash:
 		return STATES.DASH
+	
+	if Player.hooking:
+		return STATES.HOOK
 	return null
 
 func enter_state():

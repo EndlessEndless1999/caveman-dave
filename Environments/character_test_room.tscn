@@ -26,3 +26,13 @@ collision_mask = 257
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2"]
 shape = SubResource("RectangleShape2D_0ue2e")
+
+[node name="StaticBody2D3" type="StaticBody2D" parent="."]
+position = Vector2(376, 101)
+collision_layer = 256
+collision_mask = 257
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D3"]
+shape = SubResource("RectangleShape2D_0ue2e")
+
+[editable path="CharacterBody"]
