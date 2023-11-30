@@ -79,5 +79,5 @@ func update_hookshot():
 
 
 func _on_timer_timeout():
-	Player.velocity = Vector2.ZERO
+	
 	release_hook()
