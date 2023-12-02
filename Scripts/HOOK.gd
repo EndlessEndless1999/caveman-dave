@@ -12,9 +12,13 @@ var timeout : bool = false
 func enter_state():
 	print('ENTERING HOOK')
 	timer.start()
-
+	
+	#if !Player.hook_pos:
+		#return
 	
 	Player.hook_pos = get_hook_pos()
+	
+	print(Player.hook_pos)
 	
 	if Player.hook_pos:
 		Player.hooked = true
@@ -27,6 +31,7 @@ func update(delta):
 		return STATES.FALL
 	
 	if Player.hooked:
+		print('HOOKED')
 		Player.gravity(delta)
 		swing(delta)
 		
@@ -39,6 +44,7 @@ func exit_state():
 	timeout = false
 
 func get_hook_pos():
+	print('WORKING')
 	for raycast : RayCast2D in raycasts.get_children():
 		if raycast.is_colliding():
 			return raycast.get_collision_point()
@@ -66,9 +72,11 @@ func swing(delta):
 		print('RETURNING')
 		return
 		
-	Player.velocity += (Player.hook_pos - Player.global_position).normalized() * 10000 * delta 
+	Player.velocity += (Player.hook_pos - Player.global_position).normalized() * 15000 * delta 
 	
 	Player.velocity.x = clamp(Player.velocity.x, -300, 1000)
+	
+	#AIR FRICTION
 	Player.velocity.y = clamp(Player.velocity.y, -200, 200)
 	
 	

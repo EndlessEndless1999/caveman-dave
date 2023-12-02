@@ -9,6 +9,7 @@ extends Node
 @onready var DASH = $DASH
 @onready var HOOK = $HOOK
 @onready var SLIDE = $SLIDE
+@onready var MAGIC = $MAGIC
 
 @onready var ATTACK_GROUND = $ATTACK_GROUND
 @onready var ATTACK_JUMP = $ATTACK_JUMP
