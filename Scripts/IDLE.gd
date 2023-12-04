@@ -17,6 +17,8 @@ func update(delta):
 		return STATES.HOOK
 	if Player.casting:
 		return STATES.MAGIC
+	if Player.parry_input:
+		return STATES.PARRY
 	return null
 
 func enter_state():

@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://cef3rjolkc8hx"]
+
+[ext_resource type="Script" path="res://Scenes/Entities/Player/PARRY.gd" id="1_bbqp5"]
+
+[node name="PARRY" type="Node"]
+script = ExtResource("1_bbqp5")
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://c6rfy6ymyjf5e"]
+[gd_scene load_steps=23 format=3 uid="uid://c6rfy6ymyjf5e"]
 
 [ext_resource type="Script" path="res://Scripts/Character.gd" id="1_gqh8n"]
 [ext_resource type="Texture2D" uid="uid://8el3f0qqov1m" path="res://Assets/character.png" id="2_t1kc4"]
@@ -16,6 +16,7 @@
 [ext_resource type="PackedScene" uid="uid://dovg3su1qtc5g" path="res://Scenes/Components/hammer_hit_box.tscn" id="13_oanpp"]
 [ext_resource type="PackedScene" uid="uid://bff8dilo7acie" path="res://Scenes/Entities/Player/HOOK.tscn" id="14_o1myl"]
 [ext_resource type="PackedScene" uid="uid://pp43378l5utp" path="res://Scenes/Entities/Player/MAGIC.tscn" id="15_stwkd"]
+[ext_resource type="PackedScene" uid="uid://cef3rjolkc8hx" path="res://Scenes/Entities/Player/PARRY.tscn" id="16_yjc5m"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0gu11"]
 size = Vector2(2.5, 3)
@@ -141,6 +142,8 @@ jump_time_to_descend = 0.3
 raycasts = NodePath("../../Hookshot")
 
 [node name="MAGIC" parent="STATES" instance=ExtResource("15_stwkd")]
+
+[node name="PARRY" parent="STATES" instance=ExtResource("16_yjc5m")]
 
 [node name="Label" type="Label" parent="."]
 offset_right = 40.0

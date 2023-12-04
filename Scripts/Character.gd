@@ -11,6 +11,7 @@ var jump_input = false
 var jump_input_actuation = false
 var climb_input = false
 var dash_input = false
+var parry_input = false
 
 var attack_input = false
 
@@ -140,6 +141,12 @@ func player_input():
 		casting = true
 	else:
 		casting = false
+		
+	#PARRY
+	if Input.is_action_just_pressed("Parry"):
+		parry_input = true
+	else:
+		parry_input = false
 
 
 
