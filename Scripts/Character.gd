@@ -24,6 +24,7 @@ var last_direction = Vector2.RIGHT
 
 #MECHANICS
 var can_dash = true
+var casting : bool = false
 
 #HOOKSHOT
 var hooking : bool = false
@@ -133,6 +134,12 @@ func player_input():
 		hooking = true
 	else:
 		hooking = false
+		
+	#Magic
+	if Input.is_action_just_pressed("Magic"):
+		casting = true
+	else:
+		casting = false
 
 
 

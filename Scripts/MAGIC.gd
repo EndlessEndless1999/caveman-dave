@@ -1,11 +1,16 @@
 extends State
+class_name MagicState
 
+
+@export var ability : MagicAbility
+
+var cast_dir : Vector2
 
 func enter_state():
-	pass
+	ability.use(Player)
 
 func update(delta):
-	return null
+	return STATES.IDLE
 
 func exit_state():
 	pass

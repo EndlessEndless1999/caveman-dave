@@ -20,7 +20,8 @@ func update(delta):
 		return STATES.SLIDE
 	if Player.jump_input_actuation and can_jump == true:
 		return STATES.JUMP
-	
+	if Player.casting:
+		return STATES.MAGIC
 	if Player.hooking:
 		return STATES.HOOK
 	return null

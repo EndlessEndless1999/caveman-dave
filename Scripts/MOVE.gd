@@ -14,6 +14,8 @@ func update(delta):
 		return STATES.JUMP
 	if Player.dash_input and Player.can_dash:
 		return STATES.DASH
+	if Player.casting:
+		return STATES.MAGIC
 	return null
 
 func enter_state():

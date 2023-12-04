@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://b4ypyj74jpi62"]
+
+[ext_resource type="SpriteFrames" uid="uid://cm455fbuemat2" path="res://Assets/Resources/fire_projectile.tres" id="1_qa86p"]
+
+[node name="FireExplosion" type="Node2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = ExtResource("1_qa86p")
+animation = &"SunBurn"
+frame_progress = 0.8834

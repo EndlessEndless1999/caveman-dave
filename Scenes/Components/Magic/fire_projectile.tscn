@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://cs6663mn88vgi"]
+
+[ext_resource type="Script" path="res://Scripts/Projectile.gd" id="1_2qrrt"]
+[ext_resource type="SpriteFrames" uid="uid://cm455fbuemat2" path="res://Assets/Resources/fire_projectile.tres" id="2_u1lqi"]
+
+[node name="FireProjectile" type="Node2D"]
+scale = Vector2(0.1, 0.1)
+script = ExtResource("1_2qrrt")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(-1, -6)
+sprite_frames = ExtResource("2_u1lqi")
+animation = &"FireSpin"
+autoplay = "FireSpin"
+frame_progress = 0.348214

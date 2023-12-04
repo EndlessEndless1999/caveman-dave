@@ -15,6 +15,8 @@ func update(delta):
 		return STATES.DASH
 	if Player.hooking:
 		return STATES.HOOK
+	if Player.casting:
+		return STATES.MAGIC
 	return null
 
 func enter_state():
