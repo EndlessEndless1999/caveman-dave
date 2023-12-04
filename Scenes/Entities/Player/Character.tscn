@@ -121,6 +121,9 @@ hammer_hit_box = NodePath("../HammerHitBox")
 [node name="MOVE" parent="STATES" instance=ExtResource("4_gn233")]
 
 [node name="JUMP" parent="STATES" instance=ExtResource("5_pucii")]
+jump_height = 200.0
+jump_time_to_peak = 1.0
+jump_time_to_descend = 0.3
 
 [node name="FALL" parent="STATES" instance=ExtResource("6_yhvhn")]
 

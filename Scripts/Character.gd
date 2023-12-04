@@ -144,7 +144,11 @@ func player_input():
 
 
 
-
+func frameFreeze(timescale, duration):
+	#0.1 timescale, 0.4 duration is good
+	Engine.time_scale = timescale
+	await get_tree().create_timer(duration * timescale).timeout
+	Engine.time_scale = 1.0
 
 
 

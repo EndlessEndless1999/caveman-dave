@@ -10,6 +10,7 @@ extends State
 var timeout : bool = false
 
 func enter_state():
+	#Player.frameFreeze(0.1, 0.4)
 	print('ENTERING HOOK')
 	timer.start()
 	

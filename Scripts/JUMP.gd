@@ -1,9 +1,16 @@
 extends State
 
+@export var jump_height : float
+@export var jump_time_to_peak : float
+@export var jump_time_to_descend : float
+
+@onready var jump_velocity : float = ((2.0 * jump_height) / jump_time_to_peak) * -1.0
+@onready var jump_gravity : float = ((-2.0 * jump_height) / (jump_time_to_peak * jump_time_to_peak)) * -1.0
+@onready var fall_gravity : float = ((-2.0 * jump_height) / (jump_time_to_descend * jump_time_to_descend)) * -1.0
 
 func update(delta):
-	Player.gravity(delta)
-	player_movement()
+	Player.velocity.y += jump_gravity * delta
+	#player_movement()
 	if Player.attack_input:
 		return STATES.ATTACK_JUMP
 	if Player.velocity.y > 0:
@@ -16,7 +23,7 @@ func update(delta):
 	return null
 
 func enter_state():
-	Player.velocity.y = Player.JUMP_VELOCITY 
+	Player.velocity.y = jump_velocity
 	Camera.update_drag_vertical(true)
 
 
