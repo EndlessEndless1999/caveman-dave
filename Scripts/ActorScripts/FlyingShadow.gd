@@ -1,7 +1,7 @@
 extends CharacterBody2D
 class_name FlyingShadow
 
-var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
+var gravity_var = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 #INITIALISABLES
 var current_target : Player
@@ -11,6 +11,8 @@ var vision_manager
 
 var start_pos : Vector2
 var start_facing_dir : Vector2
+
+var stopped : bool = false
 
 var patrol_points = []
 var patrol_index = 0
@@ -34,7 +36,8 @@ var current_state = null
 var prev_state = null
 
 
-
+func gravity(delta):
+	pass
 
 func _ready():
 	for state in STATES.get_children():

@@ -1,0 +1,32 @@
+[gd_scene load_steps=4 format=3 uid="uid://ch1k0shukrd77"]
+
+[ext_resource type="Texture2D" uid="uid://dnkykjya2vpfd" path="res://Assets/mountains_sky.png" id="1_i3dls"]
+[ext_resource type="Texture2D" uid="uid://drdk5n5406gkc" path="res://Assets/mountains.png" id="2_700fq"]
+[ext_resource type="Texture2D" uid="uid://beb4mof6gj13p" path="res://Assets/mountains_clouds.png" id="3_tvlch"]
+
+[node name="ParralaxPyramids" type="Node2D"]
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
+[node name="ParallaxLayer3" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(2.08165e-12, 2.08165e-12)
+motion_mirroring = Vector2(640, 2.08165e-12)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer3"]
+texture = ExtResource("1_i3dls")
+centered = false
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(0.5, 0.5)
+motion_mirroring = Vector2(640, 2.08165e-12)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
+texture = ExtResource("2_700fq")
+centered = false
+
+[node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_mirroring = Vector2(640, 2.08165e-12)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer2"]
+texture = ExtResource("3_tvlch")
+centered = false

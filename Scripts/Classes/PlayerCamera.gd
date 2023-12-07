@@ -17,5 +17,6 @@ func _process(delta):
 	prev_camera_pos = global_position
 
 func update_drag_vertical(value : bool):
-	drag_vertical_enabled = value
+	#drag_vertical_enabled = value
+	pass
 

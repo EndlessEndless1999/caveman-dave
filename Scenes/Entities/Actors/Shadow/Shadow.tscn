@@ -37,6 +37,7 @@ shape = SubResource("RectangleShape2D_24c66")
 
 [node name="CharacterMover" parent="." node_paths=PackedStringArray("body_to_move") instance=ExtResource("4_liv1p")]
 body_to_move = NodePath("..")
+max_speed = 50.0
 
 [node name="PatrolNodes" type="Node" parent="."]
 

@@ -9,6 +9,7 @@ extends State
 @onready var fall_gravity : float = ((-2.0 * jump_height) / (jump_time_to_descend * jump_time_to_descend)) * -1.0
 
 func update(delta):
+	player_movement()
 	Player.velocity.y += jump_gravity * delta
 	#player_movement()
 	if Player.attack_input:

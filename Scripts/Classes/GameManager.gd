@@ -1,6 +1,9 @@
 extends Node
 class_name GameManager
 
+@export var current_checkpoint : Vector2
+@export var respawn_scene : String
+
 signal toggle_game_paused(is_paused : bool)
 
 
