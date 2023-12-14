@@ -26,16 +26,12 @@ shape = SubResource("RectangleShape2D_v1xx2")
 
 [node name="CharacterBody" parent="." instance=ExtResource("2_wf08r")]
 position = Vector2(159, 81)
-scale = Vector2(5, 5)
 
 [node name="Camera2D" parent="CharacterBody" index="2"]
 position_smoothing_enabled = true
 drag_horizontal_enabled = false
 drag_left_margin = 0.1
 drag_right_margin = 0.1
-
-[node name="Label" parent="CharacterBody" index="4"]
-visible = false
 
 [node name="Platforms" type="Node" parent="."]
 

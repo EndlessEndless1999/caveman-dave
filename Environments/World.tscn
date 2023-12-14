@@ -46,7 +46,6 @@ shape = SubResource("RectangleShape2D_j3okk")
 
 [node name="CharacterBody" parent="." instance=ExtResource("1_tyvoi")]
 position = Vector2(61, 188)
-scale = Vector2(5, 5)
 
 [node name="Transition" type="Area2D" parent="."]
 position = Vector2(443, 153)
@@ -65,9 +64,6 @@ position = Vector2(221, 204)
 
 [node name="CollisionShape2D" parent="Shadow/CharacterDetector" index="0"]
 position = Vector2(0, -0.5)
-
-[node name="CharacterMover" parent="Shadow" index="3"]
-max_speed = 50.0
 
 [node name="Marker2D" type="Marker2D" parent="Shadow/PatrolNodes" index="0"]
 position = Vector2(281, 195)

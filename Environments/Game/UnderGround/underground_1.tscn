@@ -1,7 +1,11 @@
-[gd_scene load_steps=3 format=3 uid="uid://p3qoib87bbc4"]
+[gd_scene load_steps=6 format=3 uid="uid://p3qoib87bbc4"]
 
 [ext_resource type="TileSet" uid="uid://03y6u2m1ouha" path="res://Assets/Tilesets/brick tileset blob/pyramid_area.tres" id="1_rsu4c"]
 [ext_resource type="PackedScene" uid="uid://c6rfy6ymyjf5e" path="res://Scenes/Entities/Player/Character.tscn" id="2_frvcc"]
+[ext_resource type="PackedScene" uid="uid://b3fk8q84jrtu0" path="res://Tools/UI/health_bar.tscn" id="3_2c6ge"]
+[ext_resource type="Script" path="res://Scripts/tests/Health.gd" id="4_rteyp"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_atxvc"]
 
 [node name="Underground_1" type="Node2D"]
 
@@ -12,3 +16,21 @@ layer_0/tile_data = PackedInt32Array(39, 65537, 0, 38, 65537, 0, 37, 65537, 0, 3
 
 [node name="CharacterBody" parent="." instance=ExtResource("2_frvcc")]
 position = Vector2(545, 156)
+
+[node name="Darkness" type="DirectionalLight2D" parent="."]
+color = Color(0.929412, 0.486275, 0.529412, 1)
+energy = 0.6
+blend_mode = 1
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="TextureProgressBar" parent="UI" instance=ExtResource("3_2c6ge")]
+
+[node name="Health" type="Area2D" parent="."]
+script = ExtResource("4_rteyp")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Health"]
+position = Vector2(443, 165)
+shape = SubResource("CircleShape2D_atxvc")
+
+[connection signal="body_entered" from="Health" to="Health" method="_on_body_entered"]

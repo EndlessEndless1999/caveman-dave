@@ -1,0 +1,32 @@
+[gd_scene load_steps=6 format=3 uid="uid://b3fk8q84jrtu0"]
+
+[ext_resource type="Script" path="res://Tools/UI/health_bar.gd" id="1_m3d7d"]
+
+[sub_resource type="Gradient" id="Gradient_u8wls"]
+offsets = PackedFloat32Array(0.613636, 1)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_pw3fn"]
+gradient = SubResource("Gradient_u8wls")
+fill_from = Vector2(0, 0.447368)
+
+[sub_resource type="Gradient" id="Gradient_kdt3i"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_cmgs6"]
+gradient = SubResource("Gradient_kdt3i")
+
+[node name="TextureProgressBar" type="TextureProgressBar"]
+offset_right = 51.0
+offset_bottom = 11.0
+value = 50.0
+nine_patch_stretch = true
+stretch_margin_left = 1
+stretch_margin_top = 1
+stretch_margin_right = 1
+stretch_margin_bottom = 1
+texture_over = SubResource("GradientTexture2D_pw3fn")
+texture_progress = SubResource("GradientTexture2D_cmgs6")
+tint_under = Color(0.592157, 0.556863, 0.94902, 1)
+tint_over = Color(0.929412, 0, 0.47451, 0.164706)
+tint_progress = Color(0.901961, 0.635294, 0.698039, 1)
+script = ExtResource("1_m3d7d")

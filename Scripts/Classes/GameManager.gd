@@ -7,6 +7,16 @@ class_name GameManager
 signal toggle_game_paused(is_paused : bool)
 
 
+signal health_changed(player_health : int)
+
+#PLAYER STATS
+var health : int = 50:
+	get:
+		return health
+	set(value):
+		health = value
+		emit_signal('health_changed', health)
+
 var game_paused : bool = false:
 	get:
 		return game_paused

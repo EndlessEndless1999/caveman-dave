@@ -1,0 +1,6 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://dfuwg6hfgvpdv"]
+
+[ext_resource type="FontFile" uid="uid://cuufyrddwrwkp" path="res://Assets/determination-mono-web-font/DeterminationSansWebRegular-369X.ttf" id="1_gsyrt"]
+
+[resource]
+default_font = ExtResource("1_gsyrt")

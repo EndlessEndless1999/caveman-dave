@@ -40,6 +40,7 @@ var health = 3
 
 @onready var label = $Label
 @onready var timer = $IdleTimer
+@onready var hit_timer = $HitTimer
 
 func _ready():
 	start_pos = global_position
@@ -83,7 +84,7 @@ func set_attack_state():
 
 func set_hit_state():
 	current_state = STATES.HIT
-	timer.start()
+	hit_timer.start()
 
 func set_dead_state():
 	current_state = STATES.DEAD
@@ -230,4 +231,8 @@ func is_dead():
 func _on_idle_timer_timeout():
 	print('TIMEOUT')
 	return_to_start_state()
+
+
+
+func _on_hit_timer_timeout():
 	hit = false
