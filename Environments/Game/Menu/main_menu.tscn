@@ -1,0 +1,131 @@
+[gd_scene load_steps=9 format=3 uid="uid://bxmmt2j5g6ofc"]
+
+[ext_resource type="Script" path="res://Scripts/Classes/Main_Menu.gd" id="1_dpx82"]
+[ext_resource type="PackedScene" uid="uid://cyqx6x803qvik" path="res://Tools/parallax.tscn" id="2_lgv8p"]
+[ext_resource type="Theme" uid="uid://dfuwg6hfgvpdv" path="res://Tools/UI/font_theme.tres" id="3_wxy46"]
+[ext_resource type="PackedScene" uid="uid://ctg3gv2rf476j" path="res://Transitions/default_transition.tscn" id="4_ogo0l"]
+
+[sub_resource type="Animation" id="Animation_w0gae"]
+resource_name = "start"
+length = 4.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Control/MarginContainer:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.2, 0.6, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(120, 208), Vector2(120, 96), Vector2(120, 112)]
+}
+
+[sub_resource type="Animation" id="Animation_vro3a"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Control/MarginContainer:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(120, 208)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Control/MarginContainer/VBoxContainer:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_24m7k"]
+resource_name = "stop"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Control/MarginContainer/VBoxContainer:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_tomiw"]
+_data = {
+"RESET": SubResource("Animation_vro3a"),
+"start": SubResource("Animation_w0gae"),
+"stop": SubResource("Animation_24m7k")
+}
+
+[node name="Main_Menu" type="Node2D"]
+script = ExtResource("1_dpx82")
+
+[node name="Parallax" parent="." instance=ExtResource("2_lgv8p")]
+
+[node name="Control" type="Control" parent="."]
+z_index = 10
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Control"]
+layout_mode = 0
+offset_left = 120.0
+offset_top = 208.0
+offset_right = 204.0
+offset_bottom = 340.999
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/MarginContainer"]
+layout_mode = 2
+
+[node name="Start_Button" type="Button" parent="Control/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("3_wxy46")
+text = "Start "
+
+[node name="Controls" type="Button" parent="Control/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("3_wxy46")
+text = "Controls
+"
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Control"]
+layout_mode = 2
+offset_left = 80.0
+offset_top = 16.0
+offset_right = 289.0
+offset_bottom = 49.0
+theme = ExtResource("3_wxy46")
+theme_override_font_sizes/normal_font_size = 32
+bbcode_enabled = true
+text = "[wave]InverteBrave
+"
+fit_content = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_tomiw")
+}
+
+[node name="scene_transition" parent="." instance=ExtResource("4_ogo0l")]
+
+[connection signal="pressed" from="Control/MarginContainer/VBoxContainer/Start_Button" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="Control/MarginContainer/VBoxContainer/Controls" to="." method="_on_controls_pressed"]
+
+[editable path="Parallax"]

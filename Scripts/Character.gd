@@ -125,7 +125,7 @@ func player_input():
 	
 	
 	#dash
-	if Input.is_action_just_pressed("Dash"):
+	if Input.is_action_just_pressed("Dash") and Game.abilities.dash:
 		dash_input = true
 	else: 
 		dash_input = false

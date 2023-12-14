@@ -1,10 +1,12 @@
-[gd_scene load_steps=4 format=3 uid="uid://b1dbmwanvkmdc"]
+[gd_scene load_steps=5 format=3 uid="uid://b1dbmwanvkmdc"]
 
 [ext_resource type="TileSet" uid="uid://03y6u2m1ouha" path="res://Assets/Tilesets/brick tileset blob/pyramid_area.tres" id="1_4brrv"]
+[ext_resource type="Script" path="res://Environments/Game/tutorial_level.gd" id="1_gwh0k"]
 [ext_resource type="PackedScene" uid="uid://c6rfy6ymyjf5e" path="res://Scenes/Entities/Player/Character.tscn" id="2_1me2y"]
 [ext_resource type="PackedScene" uid="uid://ch1k0shukrd77" path="res://Tools/parralax_pyramids.tscn" id="2_phvme"]
 
 [node name="Pyramids-1" type="Node2D"]
+script = ExtResource("1_gwh0k")
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = ExtResource("1_4brrv")
