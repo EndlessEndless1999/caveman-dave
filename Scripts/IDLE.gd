@@ -22,5 +22,6 @@ func update(delta):
 	return null
 
 func enter_state():
+	Animation_Player.play("IDLE")
 	Player.can_dash = true
 	Camera.update_drag_vertical(false)

@@ -20,7 +20,7 @@ func update(delta):
 
 func enter_state():
 	Player.can_dash = true
-	Animation_Player.play('MOVE')
+	Animation_Player.play('RUN')
 
 func exit_state():
 	Animation_Player.stop()

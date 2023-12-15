@@ -1,10 +1,9 @@
-[gd_scene load_steps=10 format=3 uid="uid://bxmmt2j5g6ofc"]
+[gd_scene load_steps=9 format=3 uid="uid://bxmmt2j5g6ofc"]
 
 [ext_resource type="Script" path="res://Scripts/Classes/Main_Menu.gd" id="1_dpx82"]
 [ext_resource type="PackedScene" uid="uid://cyqx6x803qvik" path="res://Tools/parallax.tscn" id="2_lgv8p"]
 [ext_resource type="Theme" uid="uid://dfuwg6hfgvpdv" path="res://Tools/UI/font_theme.tres" id="3_wxy46"]
 [ext_resource type="PackedScene" uid="uid://ctg3gv2rf476j" path="res://Transitions/default_transition.tscn" id="4_ogo0l"]
-[ext_resource type="AudioStream" uid="uid://vl4qn6iadu6t" path="res://Assets/Audio/SFX/COLORALPHA 50 Menu Interface SFX/MP3/MI_SFX 05.mp3" id="5_nsegm"]
 
 [sub_resource type="Animation" id="Animation_vro3a"]
 length = 0.001
@@ -125,9 +124,6 @@ libraries = {
 }
 
 [node name="scene_transition" parent="." instance=ExtResource("4_ogo0l")]
-
-[node name="SFX" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("5_nsegm")
 
 [connection signal="pressed" from="Control/MarginContainer/VBoxContainer/Start_Button" to="." method="_on_start_button_pressed"]
 [connection signal="pressed" from="Control/MarginContainer/VBoxContainer/Controls" to="." method="_on_controls_pressed"]

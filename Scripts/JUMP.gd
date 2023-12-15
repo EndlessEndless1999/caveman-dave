@@ -26,6 +26,7 @@ func update(delta):
 	return null
 
 func enter_state():
+	Animation_Player.play('JUMP')
 	Player.velocity.y = jump_velocity
 	Camera.update_drag_vertical(true)
 
