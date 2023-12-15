@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://t2flom8kxsp3"
+path="res://.godot/imported/sfx_damage_minor.wav-23bb4c3e8bba5592361d36c9553a64d8.sample"
+
+[deps]
+
+source_file="res://Assets/Audio/SFX/1000 Retro Sound Effects/Death & Damage/Attack & Damage Sounds/sfx_damage_minor.wav"
+dest_files=["res://.godot/imported/sfx_damage_minor.wav-23bb4c3e8bba5592361d36c9553a64d8.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

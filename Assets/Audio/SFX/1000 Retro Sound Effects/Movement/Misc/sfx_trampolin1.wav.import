@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://cm27601lpy7he"
+path="res://.godot/imported/sfx_trampolin1.wav-daf6c2322844f750887e466e3ab087f3.sample"
+
+[deps]
+
+source_file="res://Assets/Audio/SFX/1000 Retro Sound Effects/Movement/Misc/sfx_trampolin1.wav"
+dest_files=["res://.godot/imported/sfx_trampolin1.wav-daf6c2322844f750887e466e3ab087f3.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

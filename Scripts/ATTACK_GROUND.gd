@@ -2,6 +2,7 @@ extends State
 
 @onready var timer = $Timer
 
+
 var attacking = true
 
 func update(delta):

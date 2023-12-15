@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://bvhyymcjvkec2"
+path="res://.godot/imported/sfx_exp_shortest_hard2.wav-2aad8bcfa78d0cdc00a47e233c4ac5e5.sample"
+
+[deps]
+
+source_file="res://Assets/Audio/SFX/1000 Retro Sound Effects/Explosions/Shortest/sfx_exp_shortest_hard2.wav"
+dest_files=["res://.godot/imported/sfx_exp_shortest_hard2.wav-2aad8bcfa78d0cdc00a47e233c4ac5e5.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://d1ssev244qri2"
+path="res://.godot/imported/sfx_exp_cluster11.wav-4d886645416633be100dfe0f66cb50d0.sample"
+
+[deps]
+
+source_file="res://Assets/Audio/SFX/1000 Retro Sound Effects/Explosions/Clusters/sfx_exp_cluster11.wav"
+dest_files=["res://.godot/imported/sfx_exp_cluster11.wav-4d886645416633be100dfe0f66cb50d0.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

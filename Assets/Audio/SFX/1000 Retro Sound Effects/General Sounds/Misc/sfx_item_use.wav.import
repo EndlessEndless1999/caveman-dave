@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://bk5pqyc831tci"
+path="res://.godot/imported/sfx_item_use.wav-0d18429005c71834d3d5e76b556da605.sample"
+
+[deps]
+
+source_file="res://Assets/Audio/SFX/1000 Retro Sound Effects/General Sounds/Misc/sfx_item_use.wav"
+dest_files=["res://.godot/imported/sfx_item_use.wav-0d18429005c71834d3d5e76b556da605.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

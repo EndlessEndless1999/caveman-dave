@@ -43,9 +43,12 @@ tracks/1/path = NodePath("STATES/ATTACK_GROUND")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0.7),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0.3, 0.7),
+"transitions": PackedFloat32Array(1, 1),
 "values": [{
+"args": [],
+"method": &"sfx"
+}, {
 "args": [],
 "method": &"animation_finished"
 }]
@@ -108,9 +111,13 @@ hframes = 13
 frame = 5
 
 [node name="Camera2D" type="Camera2D" parent="."]
+position_smoothing_enabled = true
 drag_horizontal_enabled = true
 drag_vertical_enabled = true
-drag_top_margin = 0.75
+drag_left_margin = 0.1
+drag_top_margin = 0.3
+drag_right_margin = 0.1
+drag_bottom_margin = 0.1
 script = ExtResource("3_7oqde")
 
 [node name="STATES" type="Node" parent="." node_paths=PackedStringArray("hammer_hit_box")]

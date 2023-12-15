@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://p3qoib87bbc4"]
+[gd_scene load_steps=7 format=3 uid="uid://p3qoib87bbc4"]
 
 [ext_resource type="TileSet" uid="uid://03y6u2m1ouha" path="res://Assets/Tilesets/brick tileset blob/pyramid_area.tres" id="1_rsu4c"]
 [ext_resource type="PackedScene" uid="uid://c6rfy6ymyjf5e" path="res://Scenes/Entities/Player/Character.tscn" id="2_frvcc"]
 [ext_resource type="PackedScene" uid="uid://b3fk8q84jrtu0" path="res://Tools/UI/health_bar.tscn" id="3_2c6ge"]
 [ext_resource type="Script" path="res://Scripts/tests/Health.gd" id="4_rteyp"]
+[ext_resource type="PackedScene" uid="uid://ttjxtrjthdj" path="res://Scenes/Components/Environment_Features/lamp.tscn" id="5_lgu6s"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_atxvc"]
 
@@ -32,5 +33,17 @@ script = ExtResource("4_rteyp")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Health"]
 position = Vector2(443, 165)
 shape = SubResource("CircleShape2D_atxvc")
+
+[node name="Lamp" parent="." instance=ExtResource("5_lgu6s")]
+position = Vector2(464, 169)
+
+[node name="Lamp2" parent="." instance=ExtResource("5_lgu6s")]
+position = Vector2(343, 179)
+
+[node name="Lamp3" parent="." instance=ExtResource("5_lgu6s")]
+position = Vector2(245, 176)
+
+[node name="Lamp4" parent="." instance=ExtResource("5_lgu6s")]
+position = Vector2(152, 169)
 
 [connection signal="body_entered" from="Health" to="Health" method="_on_body_entered"]

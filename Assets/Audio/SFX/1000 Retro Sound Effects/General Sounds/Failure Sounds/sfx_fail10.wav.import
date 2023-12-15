@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://cjcpralnxws05"
+path="res://.godot/imported/sfx_fail10.wav-6edc379ad3ba4c412c3623073d62b279.sample"
+
+[deps]
+
+source_file="res://Assets/Audio/SFX/1000 Retro Sound Effects/General Sounds/Failure Sounds/sfx_fail10.wav"
+dest_files=["res://.godot/imported/sfx_fail10.wav-6edc379ad3ba4c412c3623073d62b279.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://coy14si2tke10"
+path="res://.godot/imported/sfx_speech_textprint_blip3.wav-660f4ac3d553c386c8b997869e9afc68.sample"
+
+[deps]
+
+source_file="res://Assets/Audio/SFX/1000 Retro Sound Effects/General Sounds/Speech/sfx_speech_textprint_blip3.wav"
+dest_files=["res://.godot/imported/sfx_speech_textprint_blip3.wav-660f4ac3d553c386c8b997869e9afc68.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

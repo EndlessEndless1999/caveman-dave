@@ -4,3 +4,4 @@
 
 [resource]
 default_font = ExtResource("1_gsyrt")
+/colors/d = Color(0.670588, 0.172549, 0.34902, 1)

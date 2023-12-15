@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://bd2q3yfk3e62r"
+path="res://.godot/imported/sfx_buy2.wav-cad736870feab1d68ef6c7d84f37d306.sample"
+
+[deps]
+
+source_file="res://Assets/Audio/SFX/1000 Retro Sound Effects/General Sounds/Misc/sfx_buy2.wav"
+dest_files=["res://.godot/imported/sfx_buy2.wav-cad736870feab1d68ef6c7d84f37d306.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

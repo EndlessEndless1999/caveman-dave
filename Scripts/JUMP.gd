@@ -1,5 +1,7 @@
 extends State
 
+
+
 @export var jump_height : float
 @export var jump_time_to_peak : float
 @export var jump_time_to_descend : float
@@ -30,3 +32,6 @@ func enter_state():
 
 func _on_jump_timer_timeout():
 	pass # Replace with function body.
+
+
+

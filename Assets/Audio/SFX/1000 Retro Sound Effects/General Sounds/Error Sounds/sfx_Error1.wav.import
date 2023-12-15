@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://c67eiqvjgl2k0"
+path="res://.godot/imported/sfx_Error1.wav-1854c6cfb79a71dd149a2230b4b5f5bf.sample"
+
+[deps]
+
+source_file="res://Assets/Audio/SFX/1000 Retro Sound Effects/General Sounds/Error Sounds/sfx_Error1.wav"
+dest_files=["res://.godot/imported/sfx_Error1.wav-1854c6cfb79a71dd149a2230b4b5f5bf.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

@@ -1,15 +1,19 @@
-[gd_scene load_steps=6 format=3 uid="uid://1hfk8aff7lxv"]
+[gd_scene load_steps=9 format=3 uid="uid://1hfk8aff7lxv"]
 
+[ext_resource type="Script" path="res://Environments/Game/Pyramids/pyramids_2.gd" id="1_q1ns4"]
 [ext_resource type="PackedScene" uid="uid://c6rfy6ymyjf5e" path="res://Scenes/Entities/Player/Character.tscn" id="1_vflqo"]
 [ext_resource type="PackedScene" uid="uid://ch1k0shukrd77" path="res://Tools/parralax_pyramids.tscn" id="2_eiufj"]
 [ext_resource type="TileSet" uid="uid://03y6u2m1ouha" path="res://Assets/Tilesets/brick tileset blob/pyramid_area.tres" id="3_l7aem"]
 [ext_resource type="PackedScene" uid="uid://hmnr8i81d44f" path="res://Scenes/Entities/Actors/Shadow/Shadow.tscn" id="4_6b3y5"]
 [ext_resource type="PackedScene" uid="uid://djn86vjehoicg" path="res://Scenes/Entities/Actors/FlyingShadow/FlyingShadow.tscn" id="5_tkkw5"]
+[ext_resource type="PackedScene" uid="uid://ctg3gv2rf476j" path="res://Transitions/default_transition.tscn" id="6_dthv6"]
+[ext_resource type="PackedScene" uid="uid://b88177ks1w5if" path="res://Tools/portal.tscn" id="8_cwdwb"]
 
 [node name="Pyramids-2" type="Node2D"]
+script = ExtResource("1_q1ns4")
 
 [node name="CharacterBody" parent="." instance=ExtResource("1_vflqo")]
-position = Vector2(21, 158)
+position = Vector2(65, 160)
 
 [node name="ParralaxPyramids" parent="." instance=ExtResource("2_eiufj")]
 
@@ -35,6 +39,23 @@ position = Vector2(787, 71)
 
 [node name="Marker2D2" type="Marker2D" parent="FlyingShadow/PatrolNodes" index="1"]
 position = Vector2(966, 70)
+
+[node name="start" type="Marker2D" parent="."]
+position = Vector2(56, 169)
+
+[node name="end" type="Marker2D" parent="."]
+position = Vector2(960, 102)
+
+[node name="scene_transition" parent="." instance=ExtResource("6_dthv6")]
+
+[node name="portal_p_1" parent="." instance=ExtResource("8_cwdwb")]
+position = Vector2(11, 166)
+
+[node name="portal_p_2" parent="." instance=ExtResource("8_cwdwb")]
+position = Vector2(981, 103)
+
+[connection signal="body_entered" from="portal_p_1" to="." method="_on_portal_p_1_body_entered"]
+[connection signal="body_entered" from="portal_p_2" to="." method="_on_portal_p_2_body_entered"]
 
 [editable path="Shadow"]
 [editable path="Shadow/CharacterDetector"]

@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://bj867ilg435c0"
+path="res://.godot/imported/sfx_screen_transition_fade_in.wav-20631db281de5062ff8cc22e8aac9a6b.sample"
+
+[deps]
+
+source_file="res://Assets/Audio/SFX/1000 Retro Sound Effects/Movement/Portals and Transitions/sfx_screen_transition_fade_in.wav"
+dest_files=["res://.godot/imported/sfx_screen_transition_fade_in.wav-20631db281de5062ff8cc22e8aac9a6b.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

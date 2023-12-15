@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://c817nm5xysiu6"
+path="res://.godot/imported/sfx_heal7.wav-337e31308ebc41bf1ee115a66dd3e6f0.sample"
+
+[deps]
+
+source_file="res://Assets/Audio/SFX/1000 Retro Sound Effects/General Sounds/Power Ups & Healing/sfx_heal7.wav"
+dest_files=["res://.godot/imported/sfx_heal7.wav-337e31308ebc41bf1ee115a66dd3e6f0.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://blufw8wc5cue"
+path="res://.godot/imported/sfx_movement_stairs4a.wav-827a32020c1a7a5cda7b9565e58c31bf.sample"
+
+[deps]
+
+source_file="res://Assets/Audio/SFX/1000 Retro Sound Effects/Movement/Climbing Stairs/sfx_movement_stairs4a.wav"
+dest_files=["res://.godot/imported/sfx_movement_stairs4a.wav-827a32020c1a7a5cda7b9565e58c31bf.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://gt37pkaj0u2p"
+path="res://.godot/imported/sfx_emerge_funny.wav-5759f25d0521c2218c1a2ada06d5e1d7.sample"
+
+[deps]
+
+source_file="res://Assets/Audio/SFX/1000 Retro Sound Effects/General Sounds/Funny Sounds/sfx_emerge_funny.wav"
+dest_files=["res://.godot/imported/sfx_emerge_funny.wav-5759f25d0521c2218c1a2ada06d5e1d7.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

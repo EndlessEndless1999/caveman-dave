@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://df8sqx5n44j84"
+path="res://.godot/imported/sfx_platform_launched.wav-a0e014fbe62deb48075788336d16cd2a.sample"
+
+[deps]
+
+source_file="res://Assets/Audio/SFX/1000 Retro Sound Effects/General Sounds/Machines & Computers/sfx_platform_launched.wav"
+dest_files=["res://.godot/imported/sfx_platform_launched.wav-a0e014fbe62deb48075788336d16cd2a.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

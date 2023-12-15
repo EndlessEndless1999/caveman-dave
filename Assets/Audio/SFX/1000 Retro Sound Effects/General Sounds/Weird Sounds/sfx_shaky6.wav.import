@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://dxdvrrvfiwkap"
+path="res://.godot/imported/sfx_shaky6.wav-d19934b0fb485431b516fac6a57d6ec6.sample"
+
+[deps]
+
+source_file="res://Assets/Audio/SFX/1000 Retro Sound Effects/General Sounds/Weird Sounds/sfx_shaky6.wav"
+dest_files=["res://.godot/imported/sfx_shaky6.wav-d19934b0fb485431b516fac6a57d6ec6.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

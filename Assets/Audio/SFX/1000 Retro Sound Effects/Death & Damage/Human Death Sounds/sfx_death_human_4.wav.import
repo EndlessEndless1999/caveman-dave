@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://d1ymp41s0ji4x"
+path="res://.godot/imported/sfx_death_human_4.wav-61e22c30bdf5319c25c55b64654c6843.sample"
+
+[deps]
+
+source_file="res://Assets/Audio/SFX/1000 Retro Sound Effects/Death & Damage/Human Death Sounds/sfx_death_human_4.wav"
+dest_files=["res://.godot/imported/sfx_death_human_4.wav-61e22c30bdf5319c25c55b64654c6843.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

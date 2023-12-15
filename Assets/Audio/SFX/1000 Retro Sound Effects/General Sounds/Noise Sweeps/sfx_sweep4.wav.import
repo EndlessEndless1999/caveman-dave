@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://c8jlysdamfw3q"
+path="res://.godot/imported/sfx_sweep4.wav-e2399d4c5fc4faf78a29c17b726fefaa.sample"
+
+[deps]
+
+source_file="res://Assets/Audio/SFX/1000 Retro Sound Effects/General Sounds/Noise Sweeps/sfx_sweep4.wav"
+dest_files=["res://.godot/imported/sfx_sweep4.wav-e2399d4c5fc4faf78a29c17b726fefaa.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

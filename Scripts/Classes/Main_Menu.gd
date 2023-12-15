@@ -4,6 +4,7 @@ class_name MainMenu
 @onready var background = $Parallax/ParallaxBackground
 @onready var animation = $AnimationPlayer
 @onready var transition = $scene_transition
+@onready var audio = $SFX
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -17,10 +18,11 @@ func _process(delta):
 
 
 func _on_start_button_pressed():
+	audio.play()
 	animation.play("stop")
 	await animation.animation_finished
-	transition.change_scene("res://Environments/Game/tutorial_level.tscn")
+	transition.change_scene("res://Environments/Game/Intro/tutorial.tscn")
 
 
 func _on_controls_pressed():
-	pass # Replace with function body.
+	audio.play()

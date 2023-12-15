@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://dcxypyd5c1fqp"
+path="res://.godot/imported/sfx_walk9.wav-edf479795c09bfedcf825d7544773764.sample"
+
+[deps]
+
+source_file="res://Assets/Audio/SFX/1000 Retro Sound Effects/Movement/Footsteps/sfx_walk9.wav"
+dest_files=["res://.godot/imported/sfx_walk9.wav-edf479795c09bfedcf825d7544773764.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

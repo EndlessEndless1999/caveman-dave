@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://hf7dymnna8f7"
+path="res://.godot/imported/sfx_death_robot_5.wav-c25731ce85bd4c859e0c2ec662f3e706.sample"
+
+[deps]
+
+source_file="res://Assets/Audio/SFX/1000 Retro Sound Effects/Death & Damage/Robot Death Screams/sfx_death_robot_5.wav"
+dest_files=["res://.godot/imported/sfx_death_robot_5.wav-c25731ce85bd4c859e0c2ec662f3e706.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

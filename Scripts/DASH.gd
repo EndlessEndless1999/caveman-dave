@@ -1,5 +1,6 @@
 extends State
 
+
 @onready var ghost_timer = $GhostTimer
 var ghost_scene = preload("res://Scenes/Components/dash_ghost.tscn")
 

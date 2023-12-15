@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://hg61pkprdtp"
+path="res://.godot/imported/sfx_machine_broken2.wav-216fe4e3fc35ce25b163739ce0aed6f8.sample"
+
+[deps]
+
+source_file="res://Assets/Audio/SFX/1000 Retro Sound Effects/General Sounds/Machines & Computers/sfx_machine_broken2.wav"
+dest_files=["res://.godot/imported/sfx_machine_broken2.wav-216fe4e3fc35ce25b163739ce0aed6f8.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

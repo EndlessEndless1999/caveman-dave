@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://celdf38uhlfyy"
+path="res://.godot/imported/sfx_shoot_small.wav-9dfbb7b4a507dea8079ca62634236b16.sample"
+
+[deps]
+
+source_file="res://Assets/Audio/SFX/1000 Retro Sound Effects/Weapons/Misc/sfx_shoot_small.wav"
+dest_files=["res://.godot/imported/sfx_shoot_small.wav-9dfbb7b4a507dea8079ca62634236b16.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

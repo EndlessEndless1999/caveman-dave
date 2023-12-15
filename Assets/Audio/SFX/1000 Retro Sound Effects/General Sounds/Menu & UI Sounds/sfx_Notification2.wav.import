@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://clk8jonscnmna"
+path="res://.godot/imported/sfx_Notification2.wav-0bd577d006d15070fb28e088554a2331.sample"
+
+[deps]
+
+source_file="res://Assets/Audio/SFX/1000 Retro Sound Effects/General Sounds/Menu & UI Sounds/sfx_Notification2.wav"
+dest_files=["res://.godot/imported/sfx_Notification2.wav-0bd577d006d15070fb28e088554a2331.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

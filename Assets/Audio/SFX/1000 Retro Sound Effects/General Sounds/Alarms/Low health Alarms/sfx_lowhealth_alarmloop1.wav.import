@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://d27q7jnvd4xa1"
+path="res://.godot/imported/sfx_lowhealth_alarmloop1.wav-a9c00070b45d0332f4364653288ede7f.sample"
+
+[deps]
+
+source_file="res://Assets/Audio/SFX/1000 Retro Sound Effects/General Sounds/Alarms/Low health Alarms/sfx_lowhealth_alarmloop1.wav"
+dest_files=["res://.godot/imported/sfx_lowhealth_alarmloop1.wav-a9c00070b45d0332f4364653288ede7f.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

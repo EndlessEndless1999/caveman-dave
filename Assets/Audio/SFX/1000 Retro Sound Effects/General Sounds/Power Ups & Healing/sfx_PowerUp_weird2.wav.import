@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://bah6nxhhrks22"
+path="res://.godot/imported/sfx_PowerUp_weird2.wav-184196d0d9784eac330e1228aec27b2a.sample"
+
+[deps]
+
+source_file="res://Assets/Audio/SFX/1000 Retro Sound Effects/General Sounds/Power Ups & Healing/sfx_PowerUp_weird2.wav"
+dest_files=["res://.godot/imported/sfx_PowerUp_weird2.wav-184196d0d9784eac330e1228aec27b2a.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://dy3gbj40ffvsd"
+path="res://.godot/imported/sfx_menu_move8.wav-46405bd918745d3de02f9203937f9102.sample"
+
+[deps]
+
+source_file="res://Assets/Audio/SFX/1000 Retro Sound Effects/General Sounds/Menu & UI Sounds/sfx_menu_move8.wav"
+dest_files=["res://.godot/imported/sfx_menu_move8.wav-46405bd918745d3de02f9203937f9102.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

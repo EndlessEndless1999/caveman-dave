@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://bode8g67h2lfi"
+path="res://.godot/imported/sfx_exp_medium13.wav-a115929246137687e2e5fec241702544.sample"
+
+[deps]
+
+source_file="res://Assets/Audio/SFX/1000 Retro Sound Effects/Explosions/Medium Length/sfx_exp_medium13.wav"
+dest_files=["res://.godot/imported/sfx_exp_medium13.wav-a115929246137687e2e5fec241702544.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

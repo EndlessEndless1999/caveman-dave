@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://gjjgcaed2tji"
+path="res://.godot/imported/sfx_machine_malfunction.wav-2e39444b8f304ff312d977607931bf9c.sample"
+
+[deps]
+
+source_file="res://Assets/Audio/SFX/1000 Retro Sound Effects/General Sounds/Machines & Computers/sfx_machine_malfunction.wav"
+dest_files=["res://.godot/imported/sfx_machine_malfunction.wav-2e39444b8f304ff312d977607931bf9c.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://b7o36t7x8t1ev"
+path="res://.godot/imported/sfx_vehicle_helicopterloop2.wav-ab7f6599895fe56b67dc6e571b360e45.sample"
+
+[deps]
+
+source_file="res://Assets/Audio/SFX/1000 Retro Sound Effects/Movement/Vehicles/sfx_vehicle_helicopterloop2.wav"
+dest_files=["res://.godot/imported/sfx_vehicle_helicopterloop2.wav-ab7f6599895fe56b67dc6e571b360e45.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://c711w17y4qcgf"
+path="res://.godot/imported/sfx_unlock stage.wav-f93d8f99e29d6b252814f40554201b88.sample"
+
+[deps]
+
+source_file="res://Assets/Audio/SFX/1000 Retro Sound Effects/General Sounds/Menu & UI Sounds/sfx_unlock stage.wav"
+dest_files=["res://.godot/imported/sfx_unlock stage.wav-f93d8f99e29d6b252814f40554201b88.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

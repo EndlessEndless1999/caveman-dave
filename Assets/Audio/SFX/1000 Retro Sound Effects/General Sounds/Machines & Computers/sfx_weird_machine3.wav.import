@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://c7sfv32db1dvr"
+path="res://.godot/imported/sfx_weird_machine3.wav-f53faaf5f33941bf0a3fb2ed3c5ae5d4.sample"
+
+[deps]
+
+source_file="res://Assets/Audio/SFX/1000 Retro Sound Effects/General Sounds/Machines & Computers/sfx_weird_machine3.wav"
+dest_files=["res://.godot/imported/sfx_weird_machine3.wav-f53faaf5f33941bf0a3fb2ed3c5ae5d4.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://dptvu66wlft38"
+path="res://.godot/imported/sfx_attack_enemy_attack1.wav-2fc15442e48fa4debde3e8ec46881ad9.sample"
+
+[deps]
+
+source_file="res://Assets/Audio/SFX/1000 Retro Sound Effects/Death & Damage/Attack & Damage Sounds/sfx_attack_enemy_attack1.wav"
+dest_files=["res://.godot/imported/sfx_attack_enemy_attack1.wav-2fc15442e48fa4debde3e8ec46881ad9.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

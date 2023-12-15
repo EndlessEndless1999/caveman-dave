@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://ccwo01fcqfaxa"
+path="res://.godot/imported/sfx_ability_buff2.wav-6761883e833a079b9c2ccbe2ef90b9b9.sample"
+
+[deps]
+
+source_file="res://Assets/Audio/SFX/1000 Retro Sound Effects/General Sounds/Abilities/sfx_ability_buff2.wav"
+dest_files=["res://.godot/imported/sfx_ability_buff2.wav-6761883e833a079b9c2ccbe2ef90b9b9.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

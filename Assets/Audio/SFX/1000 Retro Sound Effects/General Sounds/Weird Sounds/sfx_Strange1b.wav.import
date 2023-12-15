@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://c5jep61or84xd"
+path="res://.godot/imported/sfx_Strange1b.wav-ff0f36fc1f3d6f67d3866da149d5c6a2.sample"
+
+[deps]
+
+source_file="res://Assets/Audio/SFX/1000 Retro Sound Effects/General Sounds/Weird Sounds/sfx_Strange1b.wav"
+dest_files=["res://.godot/imported/sfx_Strange1b.wav-ff0f36fc1f3d6f67d3866da149d5c6a2.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0
