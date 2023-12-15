@@ -7,8 +7,8 @@ class_name Jump
 var timeout : bool = false
 
 func enter_state():
-	Actor.velocity.x = 0
-	Actor.velocity.y = -200
+	Animation_Player.play('JUMP')
+	Actor.character_mover.jump()
 	timer.start()
 	print('JUMP')
 	print(Actor.velocity)
@@ -17,13 +17,13 @@ func exit_state():
 	timeout = false
 
 func update(delta):
-#	if Actor.is_on_floor() and timeout:
-#		return STATES.JUMP_PATROL
+	if timeout:
+		return STATES.JUMP_PATROL
 	
 	Actor.move_and_slide()
 	
 	return null
 
 
-dfunc _on_timer_timeout():
+func _on_timer_timeout():
 	timeout = true

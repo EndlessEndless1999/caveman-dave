@@ -1,7 +1,5 @@
 extends Area2D
-class_name  ShadowHitBox
-
-@export var Actor : CharacterBody2D
+class_name ShadowDamageBox
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -13,10 +11,14 @@ func _process(delta):
 	pass
 
 
-func _on_area_entered(area):
-	print('AREA ENTERED')
-	if area is HammerHurtBox:
-		print('HURT BY HAMMER!')
-		Actor.hit = true 
-	else:
-		print('NOT WORKING')
+func _on_body_entered(body):
+	if body is Player:
+		print('HURT PLAYER')
+
+
+func disable():
+	monitoring = false
+
+
+func enable():
+	monitoring = true

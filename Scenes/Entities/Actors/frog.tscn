@@ -1,0 +1,71 @@
+[gd_scene load_steps=12 format=3 uid="uid://dcbevc0ymkreu"]
+
+[ext_resource type="Texture2D" uid="uid://bv484l3ynwjha" path="res://Assets/Enemies/frog_animations_colour.png" id="1_2ui0w"]
+[ext_resource type="Script" path="res://Scenes/Entities/Actors/frog.gd" id="1_ojv7j"]
+[ext_resource type="PackedScene" uid="uid://bnc8usygjkx23" path="res://Tools/animation_player_frog.tscn" id="3_5wybo"]
+[ext_resource type="Script" path="res://Scripts/ComponentScripts/CharacterDetector.gd" id="3_65heb"]
+[ext_resource type="Script" path="res://Scripts/ComponentScripts/CharacterMover.gd" id="4_ojtru"]
+[ext_resource type="PackedScene" uid="uid://dhb2naig70y2n" path="res://Scenes/Components/ActorStates/JUMP_IDLE.tscn" id="5_pclke"]
+[ext_resource type="Script" path="res://Scenes/Entities/Actors/FROG_STATES.gd" id="5_xaqar"]
+[ext_resource type="PackedScene" uid="uid://c1lm6g3hqsxgm" path="res://Scenes/Components/ActorStates/JUMP_PATROL.tscn" id="7_q87ce"]
+[ext_resource type="PackedScene" uid="uid://baverd1fs0i6k" path="res://Scenes/Components/ActorStates/JUMP.tscn" id="8_5yjqk"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_r03r3"]
+radius = 83.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0gn72"]
+size = Vector2(20, 11)
+
+[node name="Frog" type="CharacterBody2D" node_paths=PackedStringArray("character_detector", "character_mover")]
+script = ExtResource("1_ojv7j")
+character_detector = NodePath("CharacterDetector")
+character_mover = NodePath("CharacterMover")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_2ui0w")
+hframes = 28
+
+[node name="AnimationPlayer" parent="." instance=ExtResource("3_5wybo")]
+
+[node name="CharacterDetector" type="Area2D" parent="."]
+script = ExtResource("3_65heb")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterDetector"]
+position = Vector2(-24, 46)
+shape = SubResource("CircleShape2D_r03r3")
+
+[node name="CharacterMover" type="Node" parent="." node_paths=PackedStringArray("body_to_move")]
+script = ExtResource("4_ojtru")
+body_to_move = NodePath("..")
+
+[node name="Timer" type="Timer" parent="CharacterMover"]
+wait_time = 0.4
+one_shot = true
+
+[node name="PatrolNodes" type="Node" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-24, 45.5)
+shape = SubResource("RectangleShape2D_0gn72")
+
+[node name="STATES" type="Node" parent="."]
+script = ExtResource("5_xaqar")
+
+[node name="JUMP_IDLE" parent="STATES" instance=ExtResource("5_pclke")]
+
+[node name="JUMP_PATROL" parent="STATES" instance=ExtResource("7_q87ce")]
+
+[node name="JUMP" parent="STATES" instance=ExtResource("8_5yjqk")]
+
+[node name="Jump_Timer" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
+
+[node name="Label" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 23.0
+
+[connection signal="timeout" from="CharacterMover/Timer" to="CharacterMover" method="_on_timer_timeout"]
+[connection signal="timeout" from="Jump_Timer" to="." method="_on_jump_timer_timeout"]
+
+[editable path="STATES/JUMP"]

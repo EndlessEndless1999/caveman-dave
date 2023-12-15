@@ -28,10 +28,7 @@ func _process(delta):
 		body_to_move.velocity = movement_vector * max_speed
 	
 	if jumping:
-		body_to_move.velocity.y = -75
-		body_to_move.velocity.x += 10
-		clamp(body_to_move.velocity.y, -50, -200)
-		clamp(body_to_move.velocity.x, 10, 60)
+		body_to_move.velocity.y += -40
 	
 	body_to_move.gravity(delta)
 	

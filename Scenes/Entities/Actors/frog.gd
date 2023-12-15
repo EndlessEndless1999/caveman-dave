@@ -1,27 +1,19 @@
 extends CharacterBody2D
-class_name RangedShadow
-
-var hit : bool = false
+class_name Frog
 
 var gravity_value = ProjectSettings.get_setting("physics/2d/default_gravity")
 
-
-#FLIP CHARACTER
-@export var flip_node : Node2D 
-@export var move_direction : Vector2 = Vector2.RIGHT:
-	set(new_direction):
-		if(move_direction != new_direction):
-			move_direction = new_direction
-			move_direction.x = clamp(move_direction.x, -1, 1)
-			flip_node.scale.x = move_direction.x
+var stopped : bool = false
 
 
+@onready var jump_timer = $Jump_Timer
 #INITIALISABLES
 var current_target : Player
 @export var character_detector : CharacterDetector
 var vision_manager
 @export var character_mover : CharacterMover
-
+#@export var ground_detector : GroundDetector
+#@export var jump_blocked_detector : JumpBlockedDetector
 
 var start_pos : Vector2
 var start_facing_dir : Vector2
@@ -36,10 +28,9 @@ var last_attack_time = 0.0
 @export var time_till_idle = 5
 var last_time_target_visible = 0.0
 
-var stopped : bool = false
-var shooting : bool = false
+var is_jumping : bool = false
 
-var health = 30
+var health = 3
 
 @onready var label = $Label
 @onready var timer = $IdleTimer
@@ -58,9 +49,11 @@ func _ready():
 		state.STATES = STATES
 		state.Actor = self
 		state.Animation_Player = $AnimationPlayer
-	current_state = STATES.IDLE
+	current_state = STATES.JUMP_IDLE
 		# INITIALISING REFERENCES IN STATES TO PLAYER
 	start_pos = global_position
+	
+	jump_timer.start()
 	
 	if has_node("PatrolNodes") and get_node("PatrolNodes").get_child_count() > 0:
 		#set patrol state
@@ -73,10 +66,9 @@ func _ready():
 
 
 func _physics_process(delta):
-	print(hit)
-	move_direction = velocity
-	change_state(current_state.update(delta))
 	$Label.text = str(current_state.get_name())
+	change_state(current_state.update(delta))
+	determine_jump(delta)
 	gravity(delta)
 
 func change_state(input_state):
@@ -94,6 +86,16 @@ func gravity(delta):
 		velocity.y += gravity_value * delta
 	else:
 		pass
+
+func determine_jump(delta):
+	if not is_on_floor():
+		is_jumping = false
+	
+	#elif not ground_detector.has_overlapping_bodies():
+		#is_jumping = true
+	#else:
+		#is_jumping = false
+
 
 #VISION FUNCTIONS
 
@@ -113,6 +115,9 @@ func is_dead():
 	return false
 
 
+func _on_jump_timer_timeout():
+	print('TIMETOJUMP')
+	is_jumping = true
 
-func _on_shoot_timer_timeout():
-	shooting = true
+
+

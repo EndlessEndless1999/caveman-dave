@@ -10,6 +10,9 @@ func _ready():
 func _process(delta):
 	pass
 
+func enter_state():
+	Animation_Player.play('IDLE')
+
 
 func update(delta):
 	if Actor.can_see_enemies():
@@ -21,14 +24,7 @@ func update(delta):
 	else:
 		#POSSIBLY WILL NEED TO FACE CORRECT DIRECTION
 		pass
-	return nullextends Node
+	return null
 
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass

@@ -11,15 +11,18 @@ func _process(delta):
 	pass
 
 func enter_state():
+	Animation_Player.play('ATTACK')
 	Actor.velocity = Vector2.ZERO
 	Actor.stopped = true
-	spawn_projectile()
 
 func exit_state():
 	Actor.stopped = false
 
 
 func update(delta):
+	if Actor.hit:
+		return STATES.HIT
+	
 	if Actor.shooting == false:
 		return STATES.PATROL
 		
@@ -38,4 +41,7 @@ func spawn_projectile():
 	
 	
 	await get_tree().create_timer(2).timeout
+	
+
+func end_shooting():
 	Actor.shooting = false

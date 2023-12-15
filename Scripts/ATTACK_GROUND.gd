@@ -14,7 +14,7 @@ func update(delta):
 
 func enter_state():
 	STATES.hammer_hit_box.attacking = true
-	Animation_Player.play('GROUND_ATTACK')
+	Animation_Player.play('ATTACK')
 
 func exit_state():
 	attacking = true

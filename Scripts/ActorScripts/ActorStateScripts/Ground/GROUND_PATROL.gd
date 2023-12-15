@@ -11,6 +11,7 @@ func _process(delta):
 	pass
 
 func enter_state():
+	Animation_Player.play('WALK')
 	shoot_timer.start()
 
 func update(delta):
@@ -23,6 +24,8 @@ func update(delta):
 		return STATES.SHOOT
 		Actor.timer.start(Actor.time_till_idle)
 	
+	if Actor.hit:
+		return STATES.HIT
 	
 	var our_pos = Actor.global_position
 	var next_patrol_pos = Actor.patrol_points[Actor.patrol_index]
