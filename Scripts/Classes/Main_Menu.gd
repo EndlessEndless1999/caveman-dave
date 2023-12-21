@@ -18,11 +18,9 @@ func _process(delta):
 
 
 func _on_start_button_pressed():
-	audio.play()
 	animation.play("stop")
 	await animation.animation_finished
-	transition.change_scene("res://Environments/Game/Intro/tutorial.tscn")
+	transition.change_scene("res://Environments/Game/Pyramids/Pyramids_1.tscn")
 
 
-func _on_controls_pressed():
-	audio.play()
+

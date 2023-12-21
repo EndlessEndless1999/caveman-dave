@@ -3,6 +3,8 @@ extends State
 
 func update(delta):
 	Player.gravity(delta)
+	if Player.hurt:
+		return STATES.HIT
 	if Player.attack_input:
 		return STATES.ATTACK_GROUND
 	if Player.movement_input.x != 0:

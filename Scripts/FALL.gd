@@ -8,6 +8,8 @@ var can_jump = true
 func update(delta):
 	Player.gravity(delta)
 	player_movement()
+	if Player.hurt:
+		return STATES.HIT
 	if Player.is_on_floor():
 		return STATES.IDLE
 	if Player.dash_input and Player.can_dash:

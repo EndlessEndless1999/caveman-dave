@@ -1,20 +1,110 @@
-[gd_scene load_steps=10 format=3 uid="uid://hmnr8i81d44f"]
+[gd_scene load_steps=16 format=3 uid="uid://hmnr8i81d44f"]
 
 [ext_resource type="Script" path="res://Scripts/ActorScripts/Shadow.gd" id="1_v6put"]
-[ext_resource type="Texture2D" uid="uid://uachrx165rup" path="res://icon.svg" id="1_vuh3c"]
+[ext_resource type="Texture2D" uid="uid://l2hihkb433vw" path="res://Assets/Enemies/rat_animations.png" id="2_vrfw3"]
 [ext_resource type="PackedScene" uid="uid://0rxn124nwln" path="res://Scenes/Components/character_detector.tscn" id="3_vua0y"]
 [ext_resource type="PackedScene" uid="uid://bsgtxkganwqtu" path="res://Scenes/Components/character_mover.tscn" id="4_liv1p"]
 [ext_resource type="Script" path="res://Scripts/IdleTimer.gd" id="5_ggwqw"]
 [ext_resource type="Script" path="res://Scripts/ActorScripts/ShadowHurtBox.gd" id="6_s2r42"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_8a3nk"]
-radius = 4.0
-height = 12.0
+radius = 11.0
+height = 22.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_24c66"]
 size = Vector2(90, 11)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lbt78"]
+
+[sub_resource type="Animation" id="Animation_r7skq"]
+resource_name = "ATTACK"
+length = 0.7
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [57, 58, 59, 60, 61, 62]
+}
+
+[sub_resource type="Animation" id="Animation_blbay"]
+resource_name = "IDLE"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7, 1.8, 1.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37]
+}
+
+[sub_resource type="Animation" id="Animation_hde0j"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [18]
+}
+
+[sub_resource type="Animation" id="Animation_7380j"]
+resource_name = "STUN"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [54, 55, 54, 55]
+}
+
+[sub_resource type="Animation" id="Animation_yf8wb"]
+resource_name = "WALK"
+length = 1.5
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1, 1.2, 1.3, 1.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_p3so5"]
+_data = {
+"ATTACK": SubResource("Animation_r7skq"),
+"IDLE": SubResource("Animation_blbay"),
+"RESET": SubResource("Animation_hde0j"),
+"STUN": SubResource("Animation_7380j"),
+"WALK": SubResource("Animation_yf8wb")
+}
 
 [node name="Shadow" type="CharacterBody2D" node_paths=PackedStringArray("character_detector", "character_mover")]
 script = ExtResource("1_v6put")
@@ -25,8 +115,10 @@ character_mover = NodePath("CharacterMover")
 shape = SubResource("CapsuleShape2D_8a3nk")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.0625, 0.0859375)
-texture = ExtResource("1_vuh3c")
+position = Vector2(30, -14)
+texture = ExtResource("2_vrfw3")
+hframes = 63
+frame = 18
 
 [node name="CharacterDetector" parent="." instance=ExtResource("3_vua0y")]
 collision_layer = 4
@@ -42,6 +134,7 @@ max_speed = 50.0
 [node name="PatrolNodes" type="Node" parent="."]
 
 [node name="Label" type="Label" parent="."]
+visible = false
 offset_right = 40.0
 offset_bottom = 23.0
 
@@ -61,6 +154,11 @@ shape = SubResource("RectangleShape2D_lbt78")
 [node name="HitTimer" type="Timer" parent="."]
 wait_time = 0.4
 one_shot = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_p3so5")
+}
 
 [connection signal="timeout" from="IdleTimer" to="." method="_on_idle_timer_timeout"]
 [connection signal="area_entered" from="ShadowHitBox" to="ShadowHitBox" method="_on_area_entered"]

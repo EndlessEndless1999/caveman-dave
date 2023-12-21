@@ -2,6 +2,7 @@ extends CharacterBody2D
 class_name RangedShadow
 
 var hit : bool = false
+var dead : bool = false
 
 var gravity_value = ProjectSettings.get_setting("physics/2d/default_gravity")
 
@@ -112,7 +113,12 @@ func get_visible_enemies():
 func is_dead():
 	return false
 
-
+func die():
+	queue_free()
 
 func _on_shoot_timer_timeout():
 	shooting = true
+
+
+func _on_shadow_hit_box_body_entered(body):
+	pass # Replace with function body.

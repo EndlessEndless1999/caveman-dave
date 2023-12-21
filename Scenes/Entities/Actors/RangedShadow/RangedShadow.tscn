@@ -194,6 +194,7 @@ body_to_move = NodePath("..")
 script = ExtResource("3_qm083")
 
 [node name="Label" type="Label" parent="."]
+visible = false
 offset_right = 40.0
 offset_bottom = 23.0
 
@@ -228,14 +229,17 @@ texture = ExtResource("9_nvvvb")
 hframes = 32
 frame = 29
 
-[node name="ShadowDamageBox" type="Area2D" parent="."]
-monitoring = false
+[node name="ShadowDamageBox" type="Area2D" parent="." node_paths=PackedStringArray("Actor")]
+collision_layer = 255
+collision_mask = 255
 script = ExtResource("10_vs0tk")
+Actor = NodePath("..")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ShadowDamageBox"]
 position = Vector2(47.3761, -1.23744)
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_o7gch")
 
+[connection signal="area_entered" from="ShadowHitBox" to="ShadowHitBox" method="_on_area_entered"]
 [connection signal="timeout" from="ShootTimer" to="." method="_on_shoot_timer_timeout"]
 [connection signal="body_entered" from="ShadowDamageBox" to="ShadowDamageBox" method="_on_body_entered"]

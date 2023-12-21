@@ -1,10 +1,22 @@
-[gd_scene load_steps=4 format=3 uid="uid://c84x3yjlt64i7"]
+[gd_scene load_steps=13 format=3 uid="uid://c84x3yjlt64i7"]
 
+[ext_resource type="Script" path="res://Environments/Game/Forest/forest_1.gd" id="1_go3r3"]
 [ext_resource type="TileSet" uid="uid://c3mmqpxx3fgbh" path="res://Assets/Tilesets/mushroom/forest_1.tres" id="1_nsu88"]
 [ext_resource type="PackedScene" uid="uid://bwunx7edr4s4t" path="res://Tools/forest_parralax.tscn" id="2_p4e78"]
 [ext_resource type="PackedScene" uid="uid://c6rfy6ymyjf5e" path="res://Scenes/Entities/Player/Character.tscn" id="3_m8nw5"]
+[ext_resource type="AudioStream" uid="uid://coig28visbuql" path="res://Assets/Music/jungle.mp3" id="4_ao3cg"]
+[ext_resource type="PackedScene" uid="uid://jdnfrejijqxq" path="res://Tools/death_menu.tscn" id="5_0lk3u"]
+[ext_resource type="PackedScene" uid="uid://ctg3gv2rf476j" path="res://Transitions/default_transition.tscn" id="7_18wbs"]
+[ext_resource type="PackedScene" uid="uid://b88177ks1w5if" path="res://Tools/portal.tscn" id="8_vvaex"]
+[ext_resource type="PackedScene" uid="uid://dtsgyxc87j53u" path="res://Scenes/Entities/Actors/RangedShadow/RangedShadow.tscn" id="9_lxj1t"]
+[ext_resource type="PackedScene" uid="uid://hmnr8i81d44f" path="res://Scenes/Entities/Actors/Shadow/Shadow.tscn" id="10_bdnn3"]
+[ext_resource type="PackedScene" uid="uid://c3iomtwmcnr58" path="res://Tools/pickup_sprite.tscn" id="11_pvvx0"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_5xpjg"]
+radius = 12.0416
 
 [node name="Forest_1" type="Node2D"]
+script = ExtResource("1_go3r3")
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = ExtResource("1_nsu88")
@@ -15,3 +27,103 @@ layer_0/tile_data = PackedInt32Array(655372, 131073, 0, 655371, 65537, 0, 655370
 
 [node name="CharacterBody" parent="." instance=ExtResource("3_m8nw5")]
 position = Vector2(83, 58)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_ao3cg")
+autoplay = true
+
+[node name="death_menu" parent="." instance=ExtResource("5_0lk3u")]
+
+[node name="Area2D" type="Area2D" parent="."]
+position = Vector2(295, 180)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_5xpjg")
+
+[node name="start" type="Marker2D" parent="."]
+position = Vector2(56, 71)
+
+[node name="end" type="Marker2D" parent="."]
+position = Vector2(2596, 279)
+
+[node name="scene_transition" parent="." instance=ExtResource("7_18wbs")]
+
+[node name="portal" parent="." instance=ExtResource("8_vvaex")]
+position = Vector2(2700, 302)
+
+[node name="CollisionShape2D" parent="portal" index="0"]
+position = Vector2(-7, -141.5)
+
+[node name="RangedShadow2" parent="." instance=ExtResource("9_lxj1t")]
+position = Vector2(835, 231)
+
+[node name="Marker2D" type="Marker2D" parent="RangedShadow2/PatrolNodes" index="0"]
+position = Vector2(819, 232)
+
+[node name="Marker2D2" type="Marker2D" parent="RangedShadow2/PatrolNodes" index="1"]
+position = Vector2(866, 230)
+
+[node name="RangedShadow3" parent="." instance=ExtResource("9_lxj1t")]
+position = Vector2(1082, 231)
+
+[node name="Marker2D" type="Marker2D" parent="RangedShadow3/PatrolNodes" index="0"]
+position = Vector2(1057, 229)
+
+[node name="Marker2D2" type="Marker2D" parent="RangedShadow3/PatrolNodes" index="1"]
+position = Vector2(1109, 231)
+
+[node name="RangedShadow4" parent="." instance=ExtResource("9_lxj1t")]
+position = Vector2(1731, 237)
+
+[node name="Marker2D" type="Marker2D" parent="RangedShadow4/PatrolNodes" index="0"]
+position = Vector2(1694, 235)
+
+[node name="Marker2D2" type="Marker2D" parent="RangedShadow4/PatrolNodes" index="1"]
+position = Vector2(1902, 236)
+
+[node name="Shadow" parent="." instance=ExtResource("10_bdnn3")]
+position = Vector2(1290, 260)
+
+[node name="Marker2D" type="Marker2D" parent="Shadow/PatrolNodes" index="0"]
+position = Vector2(1222, 261)
+
+[node name="Marker2D2" type="Marker2D" parent="Shadow/PatrolNodes" index="1"]
+position = Vector2(1568, 260)
+
+[node name="Shadow2" parent="." instance=ExtResource("10_bdnn3")]
+position = Vector2(2104, 264)
+
+[node name="Marker2D" type="Marker2D" parent="Shadow2/PatrolNodes" index="0"]
+position = Vector2(2008, 263)
+
+[node name="Marker2D2" type="Marker2D" parent="Shadow2/PatrolNodes" index="1"]
+position = Vector2(2268, 266)
+
+[node name="RangedShadow" parent="." instance=ExtResource("9_lxj1t")]
+position = Vector2(505, 180)
+
+[node name="Marker2D" type="Marker2D" parent="RangedShadow/PatrolNodes" index="0"]
+position = Vector2(419, 179)
+
+[node name="Marker2D2" type="Marker2D" parent="RangedShadow/PatrolNodes" index="1"]
+position = Vector2(578, 180)
+
+[node name="AnimatedSprite2D" parent="." instance=ExtResource("11_pvvx0")]
+modulate = Color(0.247059, 1, 1, 1)
+position = Vector2(297, 175)
+autoplay = "SunBurn"
+frame_progress = 0.0490802
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_entered" from="portal" to="." method="_on_portal_body_entered"]
+[connection signal="body_entered" from="RangedShadow4/ShadowHitBox" to="RangedShadow4/ShadowHitBox" method="_on_body_entered"]
+
+[editable path="portal"]
+[editable path="RangedShadow2"]
+[editable path="RangedShadow3"]
+[editable path="RangedShadow4"]
+[editable path="Shadow"]
+[editable path="Shadow/CharacterDetector"]
+[editable path="Shadow2"]
+[editable path="Shadow2/CharacterDetector"]
+[editable path="RangedShadow"]

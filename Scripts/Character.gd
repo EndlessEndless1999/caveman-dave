@@ -1,6 +1,13 @@
 extends CharacterBody2D
 class_name Player
 
+@export var flip_node : Node2D 
+@export var move_direction : Vector2 = Vector2.RIGHT:
+	set(new_direction):
+		if(move_direction != new_direction):
+			move_direction = new_direction
+			move_direction.x = clamp(move_direction.x, -1, 1)
+			flip_node.scale.x = move_direction.x
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity_value = ProjectSettings.get_setting("physics/2d/default_gravity")
@@ -12,6 +19,9 @@ var jump_input_actuation = false
 var climb_input = false
 var dash_input = false
 var parry_input = false
+var is_parrying = false
+
+var hurt : bool = false
 
 var attack_input = false
 
@@ -58,11 +68,16 @@ func _ready():
 
 func _physics_process(delta):
 	player_input()
+	move_direction = velocity
+	move_direction.y = 0
+	if move_direction == Vector2.ZERO:
+		move_direction = last_direction
 	change_state(current_state.update(delta))
 	$Label.text = str(current_state.get_name())
 	
 	velocity.x = clamp(velocity.x, -200, 500)
 	velocity.y = clamp(velocity.y, -200, 200)
+	
 	
 	move_and_slide()
 
@@ -131,19 +146,19 @@ func player_input():
 		dash_input = false
 	
 	#hookshot
-	if Input.is_action_just_pressed("Hook"):
+	if Input.is_action_just_pressed("Hook") and Game.abilities.hook:
 		hooking = true
 	else:
 		hooking = false
 		
 	#Magic
-	if Input.is_action_just_pressed("Magic"):
+	if Input.is_action_just_pressed("Magic") and Game.abilities.magic:
 		casting = true
 	else:
 		casting = false
 		
 	#PARRY
-	if Input.is_action_just_pressed("Parry"):
+	if Input.is_action_just_pressed("Parry") and Game.abilities.shell:
 		parry_input = true
 	else:
 		parry_input = false
@@ -162,3 +177,6 @@ func frameFreeze(timescale, duration):
 
 func is_dead():
 	return false
+
+func take_damage():
+	hurt = true

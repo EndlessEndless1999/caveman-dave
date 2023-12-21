@@ -1,9 +1,11 @@
 extends Node
 class_name GameManager
 
+var frame = 4
 
 @export var current_checkpoint : Vector2
 @export var respawn_scene : String
+@export var transition : CanvasLayer
 var previous_scene : String
 
 
@@ -29,14 +31,20 @@ func _input(event: InputEvent):
 #PLAYER STATS
 
 var abilities = {
-	dash = false,
+	dash = true,
 	magic = false,
 	hook = false,
 	shell = false
 }
 
-signal health_changed(player_health : int)
+signal dash
+signal magic
+signal hook
+signal shell
 
+
+signal health_changed(player_health : int)
+signal _game_over
 
 var health : int = 50:
 	get:
@@ -44,7 +52,11 @@ var health : int = 50:
 	set(value):
 		health = value
 		emit_signal('health_changed', health)
+		if health <= 0:
+			game_over()
 
+func game_over():
+	emit_signal("_game_over")
 
 
 

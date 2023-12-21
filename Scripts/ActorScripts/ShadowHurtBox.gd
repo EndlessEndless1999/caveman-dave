@@ -20,3 +20,10 @@ func _on_area_entered(area):
 		Actor.hit = true 
 	else:
 		print('NOT WORKING')
+	if area is FireMagic:
+		Actor.die()
+
+
+
+func _on_body_entered(body):
+	pass # Replace with function body.

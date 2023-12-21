@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://1hfk8aff7lxv"]
+[gd_scene load_steps=12 format=3 uid="uid://1hfk8aff7lxv"]
 
 [ext_resource type="Script" path="res://Environments/Game/Pyramids/pyramids_2.gd" id="1_q1ns4"]
 [ext_resource type="PackedScene" uid="uid://c6rfy6ymyjf5e" path="res://Scenes/Entities/Player/Character.tscn" id="1_vflqo"]
@@ -6,7 +6,11 @@
 [ext_resource type="TileSet" uid="uid://03y6u2m1ouha" path="res://Assets/Tilesets/brick tileset blob/pyramid_area.tres" id="3_l7aem"]
 [ext_resource type="PackedScene" uid="uid://ctg3gv2rf476j" path="res://Transitions/default_transition.tscn" id="6_dthv6"]
 [ext_resource type="PackedScene" uid="uid://dtsgyxc87j53u" path="res://Scenes/Entities/Actors/RangedShadow/RangedShadow.tscn" id="7_p43l0"]
+[ext_resource type="PackedScene" uid="uid://hmnr8i81d44f" path="res://Scenes/Entities/Actors/Shadow/Shadow.tscn" id="8_5hqdw"]
 [ext_resource type="PackedScene" uid="uid://b88177ks1w5if" path="res://Tools/portal.tscn" id="8_cwdwb"]
+[ext_resource type="PackedScene" uid="uid://cajipcus8tleu" path="res://Tools/pause_menu.tscn" id="9_vr51i"]
+[ext_resource type="PackedScene" uid="uid://jdnfrejijqxq" path="res://Tools/death_menu.tscn" id="10_0e4w8"]
+[ext_resource type="PackedScene" uid="uid://cyv07qkp3ky0y" path="res://Tools/pyramid_music.tscn" id="11_f3xaj"]
 
 [node name="Pyramids-2" type="Node2D"]
 script = ExtResource("1_q1ns4")
@@ -44,8 +48,34 @@ position = Vector2(157, 165)
 [node name="Marker2D2" type="Marker2D" parent="RangedShadow/PatrolNodes" index="1"]
 position = Vector2(244, 165)
 
+[node name="Shadow" parent="." instance=ExtResource("8_5hqdw")]
+position = Vector2(434, 164)
+
+[node name="Marker2D" type="Marker2D" parent="Shadow/PatrolNodes" index="0"]
+position = Vector2(362, 165)
+
+[node name="Marker2D2" type="Marker2D" parent="Shadow/PatrolNodes" index="1"]
+position = Vector2(492, 165)
+
+[node name="PauseMenuCanvas" parent="." instance=ExtResource("9_vr51i")]
+
+[node name="death_menu" parent="." instance=ExtResource("10_0e4w8")]
+
+[node name="TextureProgressBar" parent="death_menu" index="1"]
+anchors_preset = -1
+anchor_top = -0.0365451
+
+[node name="Panel" parent="death_menu" index="2" node_paths=PackedStringArray("transition")]
+transition = NodePath("../../scene_transition")
+current_scene = "res://Environments/Game/Pyramids/pyramids_2.tscn"
+
+[node name="AudioStreamPlayer" parent="." instance=ExtResource("11_f3xaj")]
+
 [connection signal="body_entered" from="portal_p_1" to="." method="_on_portal_p_1_body_entered"]
 [connection signal="body_entered" from="portal_p_2" to="." method="_on_portal_p_2_body_entered"]
-[connection signal="area_entered" from="RangedShadow/ShadowHitBox" to="RangedShadow/ShadowHitBox" method="_on_area_entered"]
 
 [editable path="RangedShadow"]
+[editable path="Shadow"]
+[editable path="Shadow/CharacterDetector"]
+[editable path="PauseMenuCanvas"]
+[editable path="death_menu"]

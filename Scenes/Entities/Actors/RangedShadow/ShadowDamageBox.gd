@@ -1,6 +1,7 @@
 extends Area2D
 class_name ShadowDamageBox
 
+@export var Actor : CharacterBody2D
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
@@ -12,8 +13,13 @@ func _process(delta):
 
 
 func _on_body_entered(body):
-	if body is Player:
-		print('HURT PLAYER')
+	if body is Player and body.is_parrying:
+		Actor.hit = true
+	
+	if body is Player and !body.is_parrying:
+		body.take_damage()
+		
+	
 
 
 func disable():

@@ -13,5 +13,4 @@ func _process(delta):
 
 
 func on_health_changed(health):
-	while value < health:
-		value += 1
+	value = health

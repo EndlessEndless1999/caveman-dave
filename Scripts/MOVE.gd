@@ -4,6 +4,8 @@ extends State
 func update(delta):
 	Player.gravity(delta)
 	player_movement()
+	if Player.hurt:
+		return STATES.HIT
 	if Player.attack_input:
 		return STATES.ATTACK_GROUND
 	if Player.velocity.x == 0:
@@ -16,6 +18,8 @@ func update(delta):
 		return STATES.DASH
 	if Player.casting:
 		return STATES.MAGIC
+	if Player.parry_input:
+		return STATES.PARRY
 	return null
 
 func enter_state():

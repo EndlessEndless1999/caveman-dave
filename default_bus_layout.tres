@@ -1,0 +1,19 @@
+[gd_resource type="AudioBusLayout" load_steps=3 format=3 uid="uid://bkfoe1ikyxlyc"]
+
+[sub_resource type="AudioEffectReverb" id="AudioEffectReverb_6i6f5"]
+resource_name = "Reverb"
+
+[sub_resource type="AudioEffectReverb" id="AudioEffectReverb_xq021"]
+resource_name = "Reverb"
+
+[resource]
+bus/0/effect/0/effect = SubResource("AudioEffectReverb_6i6f5")
+bus/0/effect/0/enabled = false
+bus/1/name = &"New Bus"
+bus/1/solo = false
+bus/1/mute = false
+bus/1/bypass_fx = false
+bus/1/volume_db = 0.762747
+bus/1/send = &"Master"
+bus/1/effect/0/effect = SubResource("AudioEffectReverb_xq021")
+bus/1/effect/0/enabled = true

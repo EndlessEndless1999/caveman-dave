@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="CaveManDave"
-run/main_scene="res://Environments/Start.tscn"
+run/main_scene="res://Environments/Game/Menu/main_menu.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
 config/icon="res://icon.svg"
 
@@ -108,3 +108,4 @@ Parry={
 [rendering]
 
 textures/canvas_textures/default_texture_filter=0
+renderer/rendering_method="gl_compatibility"

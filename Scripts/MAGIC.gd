@@ -1,16 +1,23 @@
 extends State
 class_name MagicState
 
+var _finished : bool = false
 
 @export var ability : MagicAbility
 
 var cast_dir : Vector2
 
 func enter_state():
+	Animation_Player.play("SPELL")
 	ability.use(Player)
 
 func update(delta):
-	return STATES.IDLE
+	if _finished:
+		return STATES.IDLE
+	return null
 
 func exit_state():
-	pass
+	_finished = false
+
+func is_finished():
+	_finished = true

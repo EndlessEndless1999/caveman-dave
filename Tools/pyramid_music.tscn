@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://cyv07qkp3ky0y"]
+
+[ext_resource type="AudioStream" uid="uid://07pb1pa0dvu5" path="res://Assets/Music/pyramids.mp3" id="1_47cmc"]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer"]
+stream = ExtResource("1_47cmc")
+volume_db = 5.572
+autoplay = true

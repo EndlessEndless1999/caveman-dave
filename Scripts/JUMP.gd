@@ -1,6 +1,6 @@
 extends State
 
-
+@onready var audio = $AudioStreamPlayer
 
 @export var jump_height : float
 @export var jump_time_to_peak : float
@@ -14,6 +14,8 @@ func update(delta):
 	player_movement()
 	Player.velocity.y += jump_gravity * delta
 	#player_movement()
+	if Player.hurt:
+		return STATES.HIT
 	if Player.attack_input:
 		return STATES.ATTACK_JUMP
 	if Player.velocity.y > 0:
@@ -26,6 +28,7 @@ func update(delta):
 	return null
 
 func enter_state():
+	audio.play()
 	Animation_Player.play('JUMP')
 	Player.velocity.y = jump_velocity
 	Camera.update_drag_vertical(true)

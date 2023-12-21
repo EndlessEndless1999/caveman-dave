@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://t6elg4gngm07"]
+[gd_scene load_steps=3 format=3 uid="uid://t6elg4gngm07"]
 
 [ext_resource type="Script" path="res://Scripts/ATTACK_GROUND.gd" id="1_mohcu"]
+[ext_resource type="AudioStream" uid="uid://dw7c61y8jv2n4" path="res://Assets/SFX/Frog_Attack.wav" id="2_apokq"]
 
 [node name="ATTACK_GROUND" type="Node"]
 script = ExtResource("1_mohcu")
@@ -8,5 +9,8 @@ script = ExtResource("1_mohcu")
 [node name="Timer" type="Timer" parent="."]
 wait_time = 0.3
 one_shot = true
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_apokq")
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

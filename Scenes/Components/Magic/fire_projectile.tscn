@@ -1,7 +1,11 @@
-[gd_scene load_steps=3 format=3 uid="uid://cs6663mn88vgi"]
+[gd_scene load_steps=5 format=3 uid="uid://cs6663mn88vgi"]
 
 [ext_resource type="Script" path="res://Scripts/Projectile.gd" id="1_2qrrt"]
 [ext_resource type="SpriteFrames" uid="uid://cm455fbuemat2" path="res://Assets/Resources/fire_projectile.tres" id="2_u1lqi"]
+[ext_resource type="Script" path="res://Scenes/Components/Magic/hurtbox.gd" id="3_qm571"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_r4in0"]
+radius = 107.703
 
 [node name="FireProjectile" type="Node2D"]
 scale = Vector2(0.1, 0.1)
@@ -9,7 +13,22 @@ script = ExtResource("1_2qrrt")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(-1, -6)
+scale = Vector2(5, 5)
 sprite_frames = ExtResource("2_u1lqi")
 animation = &"FireSpin"
 autoplay = "FireSpin"
 frame_progress = 0.348214
+
+[node name="hurtbox" type="Area2D" parent="."]
+script = ExtResource("3_qm571")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hurtbox"]
+position = Vector2(0, 20)
+shape = SubResource("CircleShape2D_r4in0")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.7
+one_shot = true
+
+[connection signal="area_entered" from="hurtbox" to="." method="_on_hurtbox_area_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

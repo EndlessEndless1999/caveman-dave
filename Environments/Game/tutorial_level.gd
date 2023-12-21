@@ -26,6 +26,7 @@ func _process(delta):
 func _on_area_2d_body_entered(body):
 	if body is Player:
 		Game.abilities.dash = true
+		Game.emit_signal('dash')
 
 
 

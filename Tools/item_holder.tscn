@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://chu8kar5rrrfx"]
+
+[ext_resource type="Texture2D" uid="uid://ckus6h1417vdp" path="res://Assets/item_holder_bear(1).png" id="1_c6ufs"]
+
+[node name="ItemHolderBear(1)" type="Sprite2D"]
+modulate = Color(1, 0, 1, 0.294118)
+position = Vector2(206, 151)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("1_c6ufs")

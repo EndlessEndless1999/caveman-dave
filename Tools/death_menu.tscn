@@ -1,0 +1,87 @@
+[gd_scene load_steps=7 format=3 uid="uid://jdnfrejijqxq"]
+
+[ext_resource type="Texture2D" uid="uid://dkar0auibffm0" path="res://Assets/Character/health.png" id="1_s252q"]
+[ext_resource type="PackedScene" uid="uid://b3fk8q84jrtu0" path="res://Tools/UI/health_bar.tscn" id="1_wh4p4"]
+[ext_resource type="Script" path="res://Scenes/Entities/Player/death.gd" id="2_jhqhi"]
+[ext_resource type="Theme" uid="uid://dfuwg6hfgvpdv" path="res://Tools/UI/font_theme.tres" id="3_luy3s"]
+[ext_resource type="Texture2D" uid="uid://bcv5mbmyo06h6" path="res://Assets/Character/abilities.png" id="4_icyp7"]
+[ext_resource type="Script" path="res://Tools/abilities.gd" id="6_4hsnu"]
+
+[node name="death_menu" type="CanvasLayer"]
+
+[node name="health" type="Sprite2D" parent="."]
+position = Vector2(40, 5)
+texture = ExtResource("1_s252q")
+
+[node name="TextureProgressBar" parent="." instance=ExtResource("1_wh4p4")]
+offset_left = 13.2054
+offset_top = 2.82161
+offset_right = 64.2054
+offset_bottom = 7.82161
+tint_progress = Color(0.317647, 1, 0.215686, 1)
+
+[node name="Panel" type="Panel" parent="."]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("2_jhqhi")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel"]
+layout_mode = 0
+offset_left = 96.0
+offset_top = 113.0
+offset_right = 227.0
+offset_bottom = 153.0
+
+[node name="Button" type="Button" parent="Panel/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("3_luy3s")
+text = "Try Again?"
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Panel"]
+layout_mode = 0
+offset_left = 132.0
+offset_top = 69.0
+offset_right = 451.0
+offset_bottom = 149.0
+theme = ExtResource("3_luy3s")
+bbcode_enabled = true
+text = "[color=red][wave]You Died......"
+
+[node name="Sprite2D" type="Sprite2D" parent="." node_paths=PackedStringArray("ability", "label")]
+position = Vector2(287, 11)
+texture = ExtResource("4_icyp7")
+hframes = 5
+frame = 4
+script = ExtResource("6_4hsnu")
+ability = NodePath("../ability")
+label = NodePath("../ability/RichTextLabel")
+
+[node name="Timer" type="Timer" parent="Sprite2D"]
+wait_time = 5.0
+one_shot = true
+
+[node name="ability" type="Panel" parent="."]
+visible = false
+offset_left = 106.0
+offset_top = 62.0
+offset_right = 226.0
+offset_bottom = 102.0
+
+[node name="RichTextLabel" type="RichTextLabel" parent="ability"]
+layout_mode = 0
+offset_left = 6.0
+offset_top = 2.25
+offset_right = 121.0
+offset_bottom = 42.25
+theme = ExtResource("3_luy3s")
+theme_override_font_sizes/normal_font_size = 16
+text = "You got the Dash!
+Press Z to Dash."
+fit_content = true
+
+[connection signal="pressed" from="Panel/VBoxContainer/Button" to="Panel" method="_on_button_pressed"]
+[connection signal="timeout" from="Sprite2D/Timer" to="Sprite2D" method="_on_timer_timeout"]

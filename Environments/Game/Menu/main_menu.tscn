@@ -1,9 +1,11 @@
-[gd_scene load_steps=9 format=3 uid="uid://bxmmt2j5g6ofc"]
+[gd_scene load_steps=14 format=3 uid="uid://bxmmt2j5g6ofc"]
 
 [ext_resource type="Script" path="res://Scripts/Classes/Main_Menu.gd" id="1_dpx82"]
 [ext_resource type="PackedScene" uid="uid://cyqx6x803qvik" path="res://Tools/parallax.tscn" id="2_lgv8p"]
 [ext_resource type="Theme" uid="uid://dfuwg6hfgvpdv" path="res://Tools/UI/font_theme.tres" id="3_wxy46"]
 [ext_resource type="PackedScene" uid="uid://ctg3gv2rf476j" path="res://Transitions/default_transition.tscn" id="4_ogo0l"]
+[ext_resource type="AudioStream" uid="uid://dxdj20eb6raj8" path="res://Assets/Music/title.mp3" id="5_70544"]
+[ext_resource type="Texture2D" uid="uid://d3a6nyb8odkla" path="res://Assets/Character/player_animations_canvas.png" id="6_k5bnn"]
 
 [sub_resource type="Animation" id="Animation_vro3a"]
 length = 0.001
@@ -70,6 +72,44 @@ _data = {
 "stop": SubResource("Animation_24m7k")
 }
 
+[sub_resource type="Animation" id="Animation_yiwfe"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [129]
+}
+
+[sub_resource type="Animation" id="Animation_fxge5"]
+resource_name = "idle"
+length = 6.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1, 1.2, 1.3, 1.4, 1.5, 1.6, 1.7, 1.8, 1.9, 2, 2.1, 2.2, 2.3, 2.4, 2.5, 2.6, 2.7, 2.8, 2.9, 3, 3.1, 3.2, 3.3, 3.4, 3.5, 3.6, 3.7, 3.8, 3.9, 4, 4.1, 4.2, 4.3, 4.4, 4.5, 4.6, 4.7, 4.8, 4.9, 5, 5.1, 5.2, 5.3, 5.4, 5.5, 5.6, 5.7, 5.8, 5.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [129, 129, 129, 129, 129, 129, 129, 129, 129, 129, 129, 129, 129, 129, 129, 129, 129, 129, 129, 129, 129, 129, 129, 129, 129, 129, 129, 129, 129, 129, 130, 130, 130, 130, 130, 130, 130, 130, 130, 130, 130, 130, 129, 129, 129, 129, 129, 129, 129, 129, 129, 129, 129, 129, 129, 129, 129, 129, 129, 129]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_dg1h8"]
+_data = {
+"RESET": SubResource("Animation_yiwfe"),
+"idle": SubResource("Animation_fxge5")
+}
+
 [node name="Main_Menu" type="Node2D"]
 script = ExtResource("1_dpx82")
 
@@ -124,6 +164,23 @@ libraries = {
 }
 
 [node name="scene_transition" parent="." instance=ExtResource("4_ogo0l")]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_70544")
+autoplay = true
+bus = &"New Bus"
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(176, 72)
+texture = ExtResource("6_k5bnn")
+hframes = 131
+frame = 129
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite2D"]
+libraries = {
+"": SubResource("AnimationLibrary_dg1h8")
+}
+autoplay = "idle"
 
 [connection signal="pressed" from="Control/MarginContainer/VBoxContainer/Start_Button" to="." method="_on_start_button_pressed"]
 [connection signal="pressed" from="Control/MarginContainer/VBoxContainer/Controls" to="." method="_on_controls_pressed"]

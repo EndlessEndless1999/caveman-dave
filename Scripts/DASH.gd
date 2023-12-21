@@ -17,7 +17,7 @@ func update(delta):
 	return null
 
 func enter_state():
-	ghost_timer.start()
+	#ghost_timer.start()
 	Player.can_dash = false
 	dashing = true
 	DashDuration_Timer.start(dash_duration)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=3 uid="uid://c6rfy6ymyjf5e"]
+[gd_scene load_steps=39 format=3 uid="uid://c6rfy6ymyjf5e"]
 
 [ext_resource type="Script" path="res://Scripts/Character.gd" id="1_gqh8n"]
 [ext_resource type="Texture2D" uid="uid://d3a6nyb8odkla" path="res://Assets/Character/player_animations_canvas.png" id="2_ema0t"]
@@ -17,6 +17,8 @@
 [ext_resource type="PackedScene" uid="uid://bff8dilo7acie" path="res://Scenes/Entities/Player/HOOK.tscn" id="14_o1myl"]
 [ext_resource type="PackedScene" uid="uid://pp43378l5utp" path="res://Scenes/Entities/Player/MAGIC.tscn" id="15_stwkd"]
 [ext_resource type="PackedScene" uid="uid://cef3rjolkc8hx" path="res://Scenes/Entities/Player/PARRY.tscn" id="16_yjc5m"]
+[ext_resource type="PackedScene" uid="uid://cejnf0ml3ax2u" path="res://Scenes/Entities/Player/HURT.tscn" id="17_whhko"]
+[ext_resource type="Texture2D" uid="uid://bcv5mbmyo06h6" path="res://Assets/Character/abilities.png" id="19_lo6xw"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_h7352"]
 radius = 6.0
@@ -27,7 +29,7 @@ resource_name = "ATTACK"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame_coords")
+tracks/0/path = NodePath("flip_node/Sprite2D:frame_coords")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -56,7 +58,7 @@ resource_name = "BEETLE"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame_coords")
+tracks/0/path = NodePath("flip_node/Sprite2D:frame_coords")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -64,6 +66,23 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
 "values": [Vector2i(105, 0), Vector2i(106, 0), Vector2i(107, 0), Vector2i(108, 0), Vector2i(109, 0), Vector2i(110, 0), Vector2i(111, 0), Vector2i(112, 0), Vector2i(113, 0), Vector2i(114, 0)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("STATES/PARRY")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.4, 1),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [],
+"method": &"not_parrying"
+}, {
+"args": [],
+"method": &"end"
+}]
 }
 
 [sub_resource type="Animation" id="Animation_hbww3"]
@@ -73,7 +92,7 @@ loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/path = NodePath("flip_node/Sprite2D:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -88,7 +107,7 @@ resource_name = "DASH"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/path = NodePath("flip_node/Sprite2D:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -104,7 +123,7 @@ length = 0.7
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/path = NodePath("flip_node/Sprite2D:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -137,7 +156,7 @@ length = 1.3
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame_coords")
+tracks/0/path = NodePath("flip_node/Sprite2D:frame_coords")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -154,7 +173,7 @@ loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame_coords")
+tracks/0/path = NodePath("flip_node/Sprite2D:frame_coords")
 tracks/0/interp = 0
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -169,7 +188,7 @@ resource_name = "JUMP"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/path = NodePath("flip_node/Sprite2D:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -185,7 +204,7 @@ length = 0.4
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame_coords")
+tracks/0/path = NodePath("flip_node/Sprite2D:frame_coords")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -202,7 +221,7 @@ loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/path = NodePath("flip_node/Sprite2D:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -217,7 +236,7 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/path = NodePath("flip_node/Sprite2D:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -229,7 +248,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Sprite2D:frame_coords")
+tracks/1/path = NodePath("flip_node/Sprite2D:frame_coords")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -245,7 +264,7 @@ length = 0.7
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame_coords")
+tracks/0/path = NodePath("flip_node/Sprite2D:frame_coords")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -262,7 +281,7 @@ loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame_coords")
+tracks/0/path = NodePath("flip_node/Sprite2D:frame_coords")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -279,7 +298,7 @@ loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/path = NodePath("flip_node/Sprite2D:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -295,7 +314,7 @@ length = 0.6
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame_coords")
+tracks/0/path = NodePath("flip_node/Sprite2D:frame_coords")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -304,6 +323,20 @@ tracks/0/keys = {
 "update": 1,
 "values": [Vector2i(115, 0), Vector2i(116, 0), Vector2i(117, 0), Vector2i(118, 0), Vector2i(119, 0), Vector2i(120, 0)]
 }
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("STATES/MAGIC")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.6),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"is_finished"
+}]
+}
 
 [sub_resource type="Animation" id="Animation_efbge"]
 resource_name = "STUN"
@@ -311,7 +344,7 @@ length = 0.4
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame_coords")
+tracks/0/path = NodePath("flip_node/Sprite2D:frame_coords")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -319,6 +352,20 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
 "values": [Vector2i(97, 0), Vector2i(98, 0), Vector2i(99, 0), Vector2i(100, 0)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("STATES/HURT")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.4),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"is_finished"
+}]
 }
 
 [sub_resource type="Animation" id="Animation_lspsd"]
@@ -328,7 +375,7 @@ loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/path = NodePath("flip_node/Sprite2D:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -359,19 +406,15 @@ _data = {
 "SWING": SubResource("Animation_lspsd")
 }
 
-[node name="CharacterBody" type="CharacterBody2D" groups=["player"]]
+[node name="CharacterBody" type="CharacterBody2D" node_paths=PackedStringArray("flip_node") groups=["player"]]
 collision_layer = 5
 collision_mask = 5
 script = ExtResource("1_gqh8n")
+flip_node = NodePath("flip_node")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-2, 3)
 shape = SubResource("CapsuleShape2D_h7352")
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(18, -8)
-texture = ExtResource("2_ema0t")
-hframes = 131
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position_smoothing_enabled = true
@@ -385,7 +428,7 @@ script = ExtResource("3_7oqde")
 
 [node name="STATES" type="Node" parent="." node_paths=PackedStringArray("hammer_hit_box")]
 script = ExtResource("3_jxtp4")
-hammer_hit_box = NodePath("../HammerHitBox")
+hammer_hit_box = NodePath("../flip_node/HammerHitBox")
 
 [node name="IDLE" parent="STATES" instance=ExtResource("3_nikui")]
 
@@ -409,11 +452,13 @@ jump_time_to_descend = 0.3
 [node name="ATTACK_FALL" parent="STATES" instance=ExtResource("12_4oq02")]
 
 [node name="HOOK" parent="STATES" node_paths=PackedStringArray("raycasts") instance=ExtResource("14_o1myl")]
-raycasts = NodePath("../../Hookshot")
+raycasts = NodePath("../../flip_node/Hookshot")
 
 [node name="MAGIC" parent="STATES" instance=ExtResource("15_stwkd")]
 
 [node name="PARRY" parent="STATES" instance=ExtResource("16_yjc5m")]
+
+[node name="HURT" parent="STATES" instance=ExtResource("17_whhko")]
 
 [node name="Label" type="Label" parent="."]
 visible = false
@@ -442,88 +487,103 @@ position = Vector2(-2, 3)
 target_position = Vector2(-13, 2.08165e-12)
 collision_mask = 2
 
-[node name="HammerHitBox" parent="." instance=ExtResource("13_oanpp")]
-position = Vector2(-2, 1)
-
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_5ou3m")
 }
 
-[node name="Hookshot" type="Node2D" parent="."]
+[node name="flip_node" type="Node2D" parent="."]
+
+[node name="HammerHitBox" parent="flip_node" instance=ExtResource("13_oanpp")]
+position = Vector2(-2, 1)
+
+[node name="Hookshot" type="Node2D" parent="flip_node"]
 position = Vector2(0, -1.5)
 rotation = -0.853466
 
-[node name="RayCast2D" type="RayCast2D" parent="Hookshot"]
+[node name="RayCast2D" type="RayCast2D" parent="flip_node/Hookshot"]
 position = Vector2(-1.5, 1)
 rotation = 4.71239
 target_position = Vector2(2.08165e-12, 500)
 collision_mask = 256
 
-[node name="RayCast2D2" type="RayCast2D" parent="Hookshot"]
+[node name="RayCast2D2" type="RayCast2D" parent="flip_node/Hookshot"]
 position = Vector2(-1.5, 1)
 rotation = 4.62512
 target_position = Vector2(2.08165e-12, 500)
 collision_mask = 256
 
-[node name="RayCast2D3" type="RayCast2D" parent="Hookshot"]
+[node name="RayCast2D3" type="RayCast2D" parent="flip_node/Hookshot"]
 position = Vector2(-1.5, 1)
 rotation = 4.79966
 target_position = Vector2(2.08165e-12, 500)
 collision_mask = 256
 
-[node name="RayCast2D4" type="RayCast2D" parent="Hookshot"]
+[node name="RayCast2D4" type="RayCast2D" parent="flip_node/Hookshot"]
 position = Vector2(-1.5, 1)
 rotation = 4.88692
 target_position = Vector2(2.08165e-12, 500)
 collision_mask = 256
 
-[node name="RayCast2D5" type="RayCast2D" parent="Hookshot"]
+[node name="RayCast2D5" type="RayCast2D" parent="flip_node/Hookshot"]
 position = Vector2(-1.5, 1)
 rotation = 4.97419
 target_position = Vector2(2.08165e-12, 500)
 collision_mask = 256
 
-[node name="RayCast2D6" type="RayCast2D" parent="Hookshot"]
+[node name="RayCast2D6" type="RayCast2D" parent="flip_node/Hookshot"]
 position = Vector2(-1.5, 1)
 rotation = 5.06145
 target_position = Vector2(2.08165e-12, 500)
 collision_mask = 256
 
-[node name="RayCast2D7" type="RayCast2D" parent="Hookshot"]
+[node name="RayCast2D7" type="RayCast2D" parent="flip_node/Hookshot"]
 position = Vector2(-1.5, 1)
 rotation = 5.14872
 target_position = Vector2(2.08165e-12, 500)
 collision_mask = 256
 
-[node name="RayCast2D8" type="RayCast2D" parent="Hookshot"]
+[node name="RayCast2D8" type="RayCast2D" parent="flip_node/Hookshot"]
 position = Vector2(-1.5, 1)
 rotation = 5.23599
 target_position = Vector2(2.08165e-12, 500)
 collision_mask = 256
 
-[node name="RayCast2D9" type="RayCast2D" parent="Hookshot"]
+[node name="RayCast2D9" type="RayCast2D" parent="flip_node/Hookshot"]
 position = Vector2(-1.5, 1)
 rotation = 4.53786
 target_position = Vector2(2.08165e-12, 500)
 collision_mask = 256
 
-[node name="RayCast2D10" type="RayCast2D" parent="Hookshot"]
+[node name="RayCast2D10" type="RayCast2D" parent="flip_node/Hookshot"]
 position = Vector2(-1.5, 1)
 rotation = 4.45059
 target_position = Vector2(2.08165e-12, 500)
 collision_mask = 256
 
-[node name="RayCast2D11" type="RayCast2D" parent="Hookshot"]
+[node name="RayCast2D11" type="RayCast2D" parent="flip_node/Hookshot"]
 position = Vector2(-1.5, 1)
 rotation = 4.36332
 target_position = Vector2(2.08165e-12, 500)
 collision_mask = 256
 
-[node name="RayCast2D12" type="RayCast2D" parent="Hookshot"]
+[node name="RayCast2D12" type="RayCast2D" parent="flip_node/Hookshot"]
 position = Vector2(-1.5, 1)
 rotation = 4.27606
 target_position = Vector2(2.08165e-12, 500)
 collision_mask = 256
 
-[editable path="HammerHitBox"]
+[node name="Sprite2D" type="Sprite2D" parent="flip_node"]
+position = Vector2(18, -8)
+texture = ExtResource("2_ema0t")
+hframes = 131
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="UI"]
+position = Vector2(120, -74)
+texture = ExtResource("19_lo6xw")
+hframes = 5
+frame = 4
+
+[editable path="flip_node/HammerHitBox"]

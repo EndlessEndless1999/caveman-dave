@@ -12,6 +12,8 @@ func gravity(delta):
 enum STATES {IDLE, PATROL, ATTACK, HIT, DEAD}
 var current_state = STATES.IDLE
 
+@onready var animation_player = $AnimationPlayer
+
 #INITIALISABLE VARIABLES
 var current_target : Player
 @export var character_detector : CharacterDetector
@@ -74,15 +76,19 @@ func _process(delta):
 
 
 func set_idle_state():
+	animation_player.play("IDLE")
 	current_state = STATES.IDLE
 
 func set_patrol_state():
+	animation_player.play("WALK")
 	current_state = STATES.PATROL
 
 func set_attack_state():
+	animation_player.play("ATTACK")
 	current_state = STATES.ATTACK
 
 func set_hit_state():
+	animation_player.play("STUN")
 	current_state = STATES.HIT
 	hit_timer.start()
 
@@ -236,3 +242,7 @@ func _on_idle_timer_timeout():
 
 func _on_hit_timer_timeout():
 	hit = false
+
+
+func die():
+	queue_free()

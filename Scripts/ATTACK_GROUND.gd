@@ -1,7 +1,7 @@
 extends State
 
 @onready var timer = $Timer
-
+@onready var audio = $AudioStreamPlayer
 
 var attacking = true
 
@@ -13,6 +13,7 @@ func update(delta):
 
 
 func enter_state():
+	audio.play()
 	STATES.hammer_hit_box.attacking = true
 	Animation_Player.play('ATTACK')
 
